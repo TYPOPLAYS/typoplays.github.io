@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Typoplays | Developer & Community Leader</title>
+<title>Typoplays | Home</title>
 
 <style>
-html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -16,120 +14,67 @@ body {
 }
 
 .container {
-  max-width: 1050px;
+  max-width: 1000px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.profile {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #38bdf8;
+  margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 48px;
   margin-bottom: 10px;
-  letter-spacing: -1px;
 }
 
 .subtitle {
-  font-size: 18px;
   opacity: 0.75;
+  margin-bottom: 60px;
 }
 
-h2 {
-  margin-top: 110px;
-  font-size: 34px;
-  color: #38bdf8;
-  letter-spacing: -0.5px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
 }
 
-.nav {
-  margin-top: 45px;
-}
-
-.nav a {
-  display: inline-block;
-  margin-right: 18px;
-  padding: 11px 20px;
-  border: 1px solid #38bdf8;
-  border-radius: 8px;
-  color: #38bdf8;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.nav a:hover {
-  background: #38bdf8;
-  color: #0f172a;
-}
-
-.card-link {
+.button-card {
+  background: #111827;
+  padding: 35px 20px;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
   text-decoration: none;
   color: inherit;
-  display: block;
-}
-
-.card {
-  background: #111827;
-  padding: 28px;
-  border-radius: 14px;
-  margin-top: 28px;
-  border: 1px solid #1f2937;
   transition: 0.3s ease;
 }
 
-.card:hover {
+.button-card:hover {
   transform: translateY(-6px);
   border-color: #38bdf8;
-  box-shadow: 0 0 35px rgba(56,189,248,0.25);
+  box-shadow: 0 0 30px rgba(56,189,248,0.25);
 }
 
-.card img {
-  width: 100%;
-  max-height: 130px;
-  object-fit: contain;
-  margin-bottom: 18px;
+.button-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #38bdf8;
 }
 
-.card strong {
-  font-size: 21px;
-  display: block;
-}
-
-.card span {
-  display: block;
-  margin-top: 6px;
-  opacity: 0.75;
+.button-card p {
+  margin: 0;
+  opacity: 0.7;
   font-size: 14px;
 }
 
-.skills {
-  margin-top: 20px;
-  line-height: 2;
-  font-size: 17px;
-}
-
-.contact-card {
-  background: #111827;
-  padding: 18px 22px;
-  border-radius: 10px;
-  margin-top: 18px;
-  border: 1px solid #1f2937;
-  transition: 0.3s ease;
-}
-
-.contact-card:hover {
-  border-color: #38bdf8;
-}
-
-.contact-card a {
-  color: #38bdf8;
-  text-decoration: none;
-}
-
-.contact-card a:hover {
-  text-decoration: underline;
-}
-
 .footer {
-  margin-top: 140px;
-  text-align: center;
+  margin-top: 120px;
   opacity: 0.5;
   font-size: 14px;
 }
@@ -139,106 +84,37 @@ h2 {
 <body>
 <div class="container">
 
+<img src="profile.webp" class="profile" alt="Profile">
+
 <h1>Typoplays</h1>
 <p class="subtitle">Java & Skript Developer • Senior Moderator • Staff Manager • Australia (AEST)</p>
 
-<div class="nav">
-  <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</div>
+<div class="grid">
 
-<h2 id="about">About Me</h2>
-<p>
-Hey! I’m Typo. I’m 16 and from Australia. I genuinely enjoy staffing and aim to bring consistency, dedication, and persistence to any team I’m part of. I have solid experience moderating and managing staff across servers of all sizes, and I’m comfortable handling everything from day-to-day moderation to higher-level staff coordination. Alongside staffing, I’m a functioning Java and Skript developer with hands-on experience building structured systems.
-</p>
-
-<h2 id="experience">Experience</h2>
-
-<a class="card-link" href="https://discord.gg/smpfinder" target="_blank">
-<div class="card">
-<img src="smpfinder.webp" alt="SMP Finder">
-<strong>SMP Finder — Senior Moderator (33.8k members)</strong>
-<span>Moderation and ticket handling</span>
-<span>Feb 2025 – Present</span>
-</div>
+<a href="about.html" class="button-card">
+  <h2>About Me</h2>
+  <p>More about who I am and what I do</p>
 </a>
 
-<a class="card-link" href="https://discord.gg/ownersunited" target="_blank">
-<div class="card">
-<img src="OU.webp" alt="Owners United">
-<strong>Owners United — Trial Moderator (4.2k members)</strong>
-<span>Moderation and ticket support</span>
-<span>Feb 2026 – Present</span>
-</div>
+<a href="experience.html" class="button-card">
+  <h2>Experience</h2>
+  <p>Full breakdown of my staffing history</p>
 </a>
 
-<div class="card">
-<img src="smpsales.webp" alt="SMP Sales">
-<strong>SMP Sales — Director (3k members, Deprecated)</strong>
-<span>Application reviewing, ticket handling, and moderation</span>
-<span>Jul 2025 – Nov 2025 (Server Shutdown)</span>
-</div>
-
-<a class="card-link" href="http://discord.ocehub.net/" target="_blank">
-<div class="card">
-<img src="ocehub.webp" alt="OceHub">
-<strong>OceHub — Manager (1.5k members)</strong>
-<span>Development, general management, and punishment appeals</span>
-<span>Jul 2025 – Nov 2025 (Resigned)</span>
-</div>
+<a href="staffing.html" class="button-card">
+  <h2>Where I'm Staffing</h2>
+  <p>My current active positions</p>
 </a>
 
-<a class="card-link" href="https://discord.gg/wan7s7tWF7" target="_blank">
-<div class="card">
-<img src="smpwars.webp" alt="SMP Wars">
-<strong>SMP Wars — Staff (1k members)</strong>
-<span>Moderation</span>
-<span>Nov 2025 – Present</span>
-</div>
+<a href="recommendations.html" class="button-card">
+  <h2>Recommendations</h2>
+  <p>Community feedback and vouches</p>
 </a>
 
-<div class="card">
-<img src="nethsmp.webp" alt="NetheriteSMP">
-<strong>NetheriteSMP — Manager (650 members)</strong>
-<span>Staff management and in-game moderation</span>
-<span>Dec 2023 – Aug 2025 (Resigned)</span>
-</div>
-
-<h2 id="skills">Skills</h2>
-<p class="skills">
-Java • Skript • HTML • Staff Management • General Management
-</p>
-
-<h2 id="contact">Contact</h2>
-
-<div class="contact-card">
-Discord: <a href="https://discordapp.com/users/717659207851049010" target="_blank">@typoplays</a>
-</div>
-
-<div class="contact-card">
-GitHub: <a href="https://github.com/TYPOPLAYS" target="_blank">github.com/TYPOPLAYS</a>
-</div>
-
-<div class="contact-card">
-SpigotMC: <a href="https://www.spigotmc.org/members/typoplays.2058040/" target="_blank">SpigotMC Account</a>
-</div>
-
-<div class="contact-card">
-YouTube: <a href="https://www.youtube.com/@typoplays" target="_blank">Youtube Account</a>
-</div>
-
-<div class="contact-card">
-Twitch: <a href="https://twitch.tv/typoplaysmc" target="_blank">Twitch Account</a>
-</div>
-
-<div class="contact-card">
-MC IGN: Typoplays
 </div>
 
 <div class="footer">
-Made by Typoplays :3
+Built by Typoplays
 </div>
 
 </div>
