@@ -1,7 +1,6 @@
-# Typoplays.github.io
+# Typoplays's Portfolio Github
 
-Personal portfolio site for Typoplays.  
-Built using HTML and CSS.
+Personal portfolio site for Typoplays (me).  
 
 ## Image Credits
 
@@ -9,9 +8,9 @@ All logos and graphical assets used on this website belong to their respective r
 
 This includes, but is not limited to:
 
-- Rizenyt  
-- kayddd_  
-- vrodo  
+- Rizenyt and the SMP Finder Production and Management Team
+- kayddd_ and the OCEHUB Team
+- vrodo and the OwnersUnited Team
 
 These assets are used for identification and informational purposes only. No ownership is claimed over any third-party images, branding, or logos displayed on this site.
 
