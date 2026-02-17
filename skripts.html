@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Typoplays | Skripts</title>
+<link rel="icon" type="image/webp" href="profile.webp">
 
 <style>
 body {
@@ -14,13 +15,9 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   padding: 80px 20px;
-}
-
-.nav {
-  margin-bottom: 40px;
 }
 
 .nav a {
@@ -38,17 +35,22 @@ body {
 }
 
 h1 {
+  margin-top: 25px;
   margin-bottom: 15px;
 }
 
 .subtitle {
-  opacity: 0.7;
-  margin-bottom: 50px;
+  opacity: 0.75;
+  margin-bottom: 40px;
+  line-height: 1.6;
 }
 
 .card {
+  display: flex;
+  gap: 25px;
+  align-items: center;
   background: #111827;
-  padding: 28px;
+  padding: 25px;
   border-radius: 14px;
   border: 1px solid #1f2937;
   margin-bottom: 25px;
@@ -57,25 +59,30 @@ h1 {
 
 .card:hover {
   border-color: #38bdf8;
-  box-shadow: 0 0 30px rgba(56,189,248,0.2);
+  transform: translateY(-4px);
 }
 
-.card h2 {
-  margin: 0 0 10px 0;
+.card-content {
+  flex: 1;
+}
+
+.card-content h2 {
+  margin: 0 0 8px 0;
   color: #38bdf8;
 }
 
-.card p {
-  margin: 6px 0 18px 0;
+.card-content p {
+  margin: 6px 0 14px 0;
   opacity: 0.85;
   line-height: 1.6;
 }
 
 .download-btn {
+  display: inline-block;
   text-decoration: none;
   color: #38bdf8;
   border: 1px solid #38bdf8;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
   transition: 0.3s ease;
   font-size: 14px;
@@ -89,32 +96,33 @@ h1 {
 </head>
 
 <body>
-
 <div class="container">
 
 <div class="nav">
   <a href="index.html">← Back to Home</a>
 </div>
 
-<h1>Public Skripts</h1>
+<h1>My Skripts</h1>
 <p class="subtitle">
-A small collection of Skripts I’ve developed and made available for public use.
+A collection of Skripts I’ve developed and made publicly available. These are built with server on the smaller side in mind.
 </p>
 
 <div class="card">
-  <h2>Manhunt</h2>
-  <p>
-  A functional manhunt event skript designed for small scale servers.
-  </p>
-  <a class="download-btn" href="skripts/manhunt.sk" download>Download</a>
+  <div class="card-content">
+    <h2>Manhunt</h2>
+    <p>A functional manhunt event skript.</p>
+    <p>Works best for small-mid sized servers.</p>
+    <a class="download-btn" href="skripts/manhunt.sk" download>Download Skript</a>
+  </div>
 </div>
 
 <div class="card">
-  <h2>Chat Formatter</h2>
-  <p>
-  A configurable chat formatting skript with inbuilt "ChatItem" and "Discord Ping" functionality.
-  </p>
-  <a class="download-btn" href="skripts/chat_formatter.sk" download>Download</a>
+  <div class="card-content">
+    <h2>Chat Formatter</h2>
+    <p>A configurable chat formatting Skript.</p>
+    <p>Includes integrated "ChatItem" functionality and discord style ping functionality.</p>
+    <a class="download-btn" href="skripts/chat_formatter.sk" download>Download Skript</a>
+  </div>
 </div>
 
 <p class="subtitle" style="margin-top: 40px;">
