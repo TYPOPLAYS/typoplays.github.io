@@ -1,0 +1,63 @@
+on chat:
+	cancel event
+
+	if {cooldown::%uuid of player%} is set:
+		send "&c You are on chat cooldown!"
+		stop
+	set {_prefix} to prefix of player
+	set {_name} to name of player
+	set {_msg} to message
+	set {_message} to {_msg}
+	set {_channel_id} to "channel-id-here"
+
+	if {_msg} contains "[i]":
+		set {_tool} to the tool of player
+		replace all "[i]" in {_msg} with {_tool}
+	if {_msg} contains "[item]":
+		set {_tool} to the tool of player
+		replace all "[item]" in {_msg} with {_tool}
+	if {_msg} contains "[hand]":
+		set {_tool} to the tool of player
+		replace all "[hand]" in {_msg} with {_tool}
+	if {_msg} contains "&1":
+		replace all "&1" in {_msg} with "§1"
+	if {_msg} contains "&2":
+		replace all "&2" in {_msg} with "§2"
+	if {_msg} contains "&3":
+		replace all "&3" in {_msg} with "§3"
+	if {_msg} contains "&4":
+		replace all "&4" in {_msg} with "§4"
+	if {_msg} contains "&5":
+		replace all "&5" in {_msg} with "§5"
+	if {_msg} contains "&6":
+		replace all "&6" in {_msg} with "§6"
+	if {_msg} contains "&7":
+		replace all "&7" in {_msg} with "§7"
+	if {_msg} contains "&8":
+		replace all "&8" in {_msg} with "§8"
+	if {_msg} contains "&9":
+		replace all "&9" in {_msg} with "§9"
+	if {_msg} contains "&a":
+		replace all "&a" in {_msg} with "§a"
+	if {_msg} contains "&b":
+		replace all "&b" in {_msg} with "§b"
+	if {_msg} contains "&c":
+		replace all "&c" in {_msg} with "§c"
+	if {_msg} contains "&d":
+		replace all "&d" in {_msg} with "§d"
+	if {_msg} contains "&e":
+		replace all "&e" in {_msg} with "§e"
+	if {_msg} contains "&f":
+		replace all "&f" in {_msg} with "§f"
+
+	loop all players:
+		if  {_msg} contains "%loop-player%":
+			replace all "%loop-player%" in {_msg} with "&6@%loop-player%"
+			play sound "entity.experience_orb.pickup" with volume 5 and pitch 0.8 to the loop-player
+
+	send "%{_prefix}% %{_name}% » %{_msg}%" to all players
+	execute console command "discordsrv broadcast #%{_channel_id}% **%{_prefix}%** %{_name}% » %{_message}%"
+
+	set {cooldown::%uuid of player%} to true
+	wait 1 second
+	delete {cooldown::%uuid of player%}
