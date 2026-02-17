@@ -41,19 +41,31 @@ body {
   text-align: center;
 }
 
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
 .profile {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #38bdf8;
-  margin-bottom: 30px;
   box-shadow: 0 0 30px rgba(56,189,248,0.25);
+}
+
+.hero-text {
+  text-align: left;
 }
 
 h1 {
   font-size: 52px;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
   letter-spacing: 1px;
 }
 
@@ -136,22 +148,26 @@ h1 {
   <a href="about.html">About</a>
   <a href="experience.html">Experience</a>
   <a href="vouches.html">Vouches</a>
+  <a href="skripts.html">Skripts</a>
 </div>
 
 <div class="container">
 
-<img src="profile.webp" class="profile" alt="Profile">
-
-<h1>Typoplays</h1>
-<p class="subtitle">
-Java & Skript Developer • General Staffing • Staff and General Management • Australia (AEDT/GMT+11)
-</p>
+<div class="hero">
+  <img src="profile.webp" class="profile" alt="Profile">
+  <div class="hero-text">
+    <h1>Typoplays</h1>
+    <p class="subtitle">
+    Java & Skript Developer • Staffing • General & Staff Management • Australia (AEDT/GMT+11)
+    </p>
+  </div>
+</div>
 
 <div class="grid">
 
 <a href="about.html" class="button-card">
   <h2>About Me</h2>
-  <p>Learn more about who I am, my background, and what I specialise in.</p>
+  <p>Learn more about who I am, my background in staffing, and what I specialise in.</p>
 </a>
 
 <a href="experience.html" class="button-card">
@@ -162,6 +178,11 @@ Java & Skript Developer • General Staffing • Staff and General Management �
 <a href="vouches.html" class="button-card">
   <h2>Vouches</h2>
   <p>Vouches from people I’ve worked with.</p>
+</a>
+
+<a href="skripts.html" class="button-card">
+  <h2>Skripts</h2>
+  <p>Download my public Skripts such as manhunt remake and more.</p>
 </a>
 
 </div>
