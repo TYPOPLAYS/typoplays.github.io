@@ -7,12 +7,47 @@
 <link rel="icon" type="image/webp" href="profile.webp">
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
+  background: #020617;
   color: #e2e8f0;
   overflow-x: hidden;
+  animation: fadeIn 1.2s ease;
+}
+
+/* Background glow orbs */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+body::before {
+  background: #38bdf8;
+  top: -150px;
+  left: -150px;
+}
+
+body::after {
+  background: #7c3aed;
+  bottom: -200px;
+  right: -200px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .container {
@@ -36,81 +71,79 @@ body {
 
 .nav a:hover {
   background: #38bdf8;
-  color: #0f172a;
+  color: #020617;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 46px;
   margin-bottom: 10px;
   letter-spacing: 1px;
 }
 
 .subtitle {
   opacity: 0.7;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   font-size: 15px;
 }
 
+/* Scroll section */
 .dev-scroll {
   display: flex;
   gap: 60px;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding-bottom: 40px;
   cursor: grab;
 }
 
 .dev-scroll::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 
 .dev-scroll::-webkit-scrollbar-thumb {
-  background: #1f2937;
+  background: rgba(255,255,255,0.1);
   border-radius: 10px;
 }
 
 .dev-card {
   position: relative;
-  min-width: 360px;
+  min-width: 380px;
   height: 520px;
-  border-radius: 26px;
-  padding: 0;
+  border-radius: 30px;
   flex-shrink: 0;
+  scroll-snap-align: start;
   overflow: hidden;
-  background: linear-gradient(145deg, #0b1220, #111827);
-  border: 1px solid rgba(56,189,248,0.15);
-  backdrop-filter: blur(10px);
+  padding: 0;
+  background: linear-gradient(160deg, #0b1220, #111827);
+  border: 1px solid rgba(255,255,255,0.06);
   transition: 0.4s ease;
+  backdrop-filter: blur(12px);
 }
 
-.dev-card::before {
+/* Subtle depth layer */
+.dev-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(56,189,248,0.15),
-    transparent 70%
-  );
-  transform: translateX(-100%);
-  transition: 0.8s ease;
+  background: radial-gradient(circle at 80% 20%, rgba(56,189,248,0.15), transparent 60%);
+  opacity: 0;
+  transition: 0.4s ease;
 }
 
-.dev-card:hover::before {
-  transform: translateX(100%);
+.dev-card:hover::after {
+  opacity: 1;
 }
 
 .dev-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  border-color: #38bdf8;
-  box-shadow: 0 0 60px rgba(56,189,248,0.25);
+  transform: translateY(-12px) scale(1.04);
+  box-shadow: 0 20px 80px rgba(56,189,248,0.2);
 }
 
 .card-header {
-  padding: 25px 30px;
+  padding: 30px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  background: rgba(56,189,248,0.05);
+  background: rgba(255,255,255,0.02);
 }
 
 .card-header h2 {
@@ -121,9 +154,9 @@ h1 {
 
 .badge {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 12px;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 20px;
   background: rgba(56,189,248,0.15);
   color: #38bdf8;
@@ -131,6 +164,7 @@ h1 {
 
 .card-body {
   padding: 30px;
+  transition: 0.3s ease;
 }
 
 .card-body ul {
@@ -138,12 +172,13 @@ h1 {
   padding: 0;
   margin: 0;
   font-size: 14px;
-  line-height: 1.8;
-  opacity: 0.8;
+  line-height: 1.9;
+  opacity: 0.75;
+  transition: 0.3s ease;
 }
 
 .card-body li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   padding-left: 18px;
   position: relative;
 }
@@ -157,20 +192,28 @@ h1 {
 
 .dev-card:hover .card-body ul {
   opacity: 1;
+  transform: scale(1.02);
 }
 
-/* Themed link styling */
+/* Link styling */
 .card-body a {
   color: #38bdf8;
   text-decoration: none;
-  font-weight: 500;
   transition: 0.3s ease;
   border-bottom: 1px solid transparent;
 }
 
 .card-body a:hover {
   border-bottom: 1px solid #38bdf8;
-  text-shadow: 0 0 8px rgba(56,189,248,0.6);
+  text-shadow: 0 0 10px rgba(56,189,248,0.7);
+}
+
+/* Scroll hint */
+.scroll-hint {
+  margin-top: 20px;
+  font-size: 13px;
+  opacity: 0.5;
+  letter-spacing: 1px;
 }
 </style>
 </head>
@@ -190,7 +233,8 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>OceHub</h2>
-      <span class="badge">Public SMP & Events Network</span>
+      <span class="badge">OCE based network with a Public SMP & Events Server</span>
+      <span class="badge">PAID</span>
     </div>
     <div class="card-body">
       <ul>
@@ -200,7 +244,7 @@ h1 {
         <li>King of The Hill plugin</li>
         <li>Survival Games plugin</li>
         <li>Velocity cross-server broadcasting plugin</li>
-        <li>Other basic gameplay skripting</li>
+        <li>Other basic skripts like EssentialsX shortcuts</li>
       </ul>
     </div>
   </div>
@@ -209,6 +253,7 @@ h1 {
     <div class="card-header">
       <h2>NetheriteSMP</h2>
       <span class="badge">Survival Network</span>
+      <span class="badge">PAID</span>
     </div>
     <div class="card-body">
       <ul>
@@ -216,7 +261,7 @@ h1 {
         <li>Staff Mode skript</li>
         <li>Harvester Hoe skript</li>
         <li>Custom EcoEnchants configuration</li>
-        <li>Custom EcoArmour Configuration</li>
+        <li>Custom EcoArmour configuration</li>
       </ul>
     </div>
   </div>
@@ -225,11 +270,12 @@ h1 {
     <div class="card-header">
       <h2>Confliction SMP</h2>
       <span class="badge">Public SMP</span>
+      <span class="badge">FREE</span>
     </div>
     <div class="card-body">
       <ul>
         <li>Fully custom classes plugin</li>
-        <li>Unique attribute based framework</li>
+        <li>Unique attribute based system</li>
         <li>See below document for more info.</li>
         <li><a href="https://docs.google.com/document/d/15WZ01Fwi_6O8xo1ZnH1Fyb2XMHVryMtT4oZoQ6DV_Vk" target="_blank">View full plugin document</a></li>
       </ul>
@@ -240,23 +286,26 @@ h1 {
     <div class="card-header">
       <h2>FarmINC</h2>
       <span class="badge">Public Minehut Server</span>
+      <span class="badge">FREE</span>
     </div>
     <div class="card-body">
       <ul>
         <li>Simple replant skript</li>
-        <li>Fully custom Pets plugin</li>
-        <li>Custom gameplay enhancements</li>
+        <li>Fully custom pets plugin</li>
+        <li>Custom TAB Config</li>
+        <li>AjLeaderboards Configuration</li>
       </ul>
     </div>
   </div>
 
 </div>
 
+<p class="scroll-hint">← Drag or scroll to explore →</p>
+
 </div>
 
 <script>
 const slider = document.querySelector('.dev-scroll');
-
 let isDown = false;
 let startX;
 let scrollLeft;
