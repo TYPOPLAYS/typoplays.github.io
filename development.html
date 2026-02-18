@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   padding: 80px 20px;
 }
@@ -49,10 +49,10 @@ h1 {
 
 .dev-scroll {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   cursor: grab;
 }
 
@@ -66,34 +66,54 @@ h1 {
 }
 
 .dev-card {
-  min-width: 320px;
-  background: #111827;
+  min-width: 340px;
+  height: 460px;
+  background: linear-gradient(180deg, #111827, #0b1220);
   border: 1px solid #1f2937;
-  border-radius: 18px;
-  padding: 30px;
+  border-radius: 22px;
+  padding: 0;
   flex-shrink: 0;
   transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .dev-card:hover {
   border-color: #38bdf8;
-  box-shadow: 0 0 30px rgba(56,189,248,0.2);
+  box-shadow: 0 0 40px rgba(56,189,248,0.25);
+  transform: translateY(-6px);
 }
 
-.dev-card h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
+.card-header {
+  padding: 20px 25px;
+  background: rgba(56,189,248,0.05);
+  border-bottom: 1px solid #1f2937;
 }
 
-.dev-desc {
+.card-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.card-body {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body ul {
+  padding-left: 18px;
+  margin: 0;
+  opacity: 0.8;
   font-size: 14px;
-  opacity: 0.75;
   line-height: 1.6;
-  transition: 0.3s ease;
 }
 
-.dev-card:hover .dev-desc {
-  font-size: 16px;
+.dev-card:hover .card-body ul {
   opacity: 1;
 }
 </style>
@@ -106,39 +126,64 @@ h1 {
   <a href="index.html">← Back to Home</a>
 </div>
 
-<h1>My Development Projects</h1>
-<p class="subtitle">Servers and communities I’ve built custom systems and plugins for.</p>
+<h1>My Development</h1>
+<p class="subtitle">A breakdown of servers and communities I’ve developed custom systems and plugins for.</p>
 
 <div class="dev-scroll">
 
   <div class="dev-card">
-    <h2>OceHub</h2>
-    <p class="dev-desc">
-      Developed a Levels SMP plugin, custom crafting limiter, custom maces plugin, and a fully functional KOTH plugin.
-      Also handled additional general skripting and gameplay system improvements.
-    </p>
+    <div class="card-header">
+      <h2>OceHub</h2>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Levels SMP plugin</li>
+        <li>Custom crafting limiter</li>
+        <li>Custom maces plugin</li>
+        <li>KOTH plugin</li>
+        <li>General gameplay skripting</li>
+      </ul>
+    </div>
   </div>
 
   <div class="dev-card">
-    <h2>NetheriteSMP</h2>
-    <p class="dev-desc">
-      Created Chat Formatter and Staff Mode skripts.
-      Configured custom EcoEnchants and EcoArmour setups tailored to server balance and progression.
-    </p>
+    <div class="card-header">
+      <h2>NetheriteSMP</h2>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Chat Formatter skript</li>
+        <li>Staff Mode skript</li>
+        <li>Custom EcoEnchants configuration</li>
+        <li>Custom EcoArmour configuration</li>
+      </ul>
+    </div>
   </div>
 
   <div class="dev-card">
-    <h2>Confliction SMP</h2>
-    <p class="dev-desc">
-      Developed a fully custom Classes plugin with unique abilities and structured progression systems.
-    </p>
+    <div class="card-header">
+      <h2>Confliction SMP</h2>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Fully custom Classes plugin</li>
+        <li>Unique abilities system</li>
+        <li>Structured progression mechanics</li>
+      </ul>
+    </div>
   </div>
 
   <div class="dev-card">
-    <h2>FarmINC</h2>
-    <p class="dev-desc">
-      Built a simple replant skript for farming automation and a fully custom Pets plugin with unique mechanics.
-    </p>
+    <div class="card-header">
+      <h2>FarmINC</h2>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Simple replant skript</li>
+        <li>Fully custom Pets plugin</li>
+        <li>Custom gameplay mechanics</li>
+      </ul>
+    </div>
   </div>
 
 </div>
