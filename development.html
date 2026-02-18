@@ -10,18 +10,19 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #0f172a, #020617);
+  background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
   color: #e2e8f0;
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 100px 30px;
 }
 
 .nav {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .nav a {
@@ -39,20 +40,23 @@ body {
 }
 
 h1 {
-  margin-bottom: 15px;
+  font-size: 42px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
 .subtitle {
   opacity: 0.7;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+  font-size: 15px;
 }
 
 .dev-scroll {
   display: flex;
-  gap: 40px;
+  gap: 60px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
   cursor: grab;
 }
 
@@ -66,51 +70,89 @@ h1 {
 }
 
 .dev-card {
-  min-width: 340px;
-  height: 460px;
-  background: linear-gradient(180deg, #111827, #0b1220);
-  border: 1px solid #1f2937;
-  border-radius: 22px;
+  position: relative;
+  min-width: 360px;
+  height: 520px;
+  border-radius: 26px;
   padding: 0;
   flex-shrink: 0;
-  transition: 0.3s ease;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
+  background: linear-gradient(145deg, #0b1220, #111827);
+  border: 1px solid rgba(56,189,248,0.15);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+}
+
+.dev-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(56,189,248,0.15),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: 0.8s ease;
+}
+
+.dev-card:hover::before {
+  transform: translateX(100%);
 }
 
 .dev-card:hover {
+  transform: translateY(-10px) scale(1.03);
   border-color: #38bdf8;
-  box-shadow: 0 0 40px rgba(56,189,248,0.25);
-  transform: translateY(-6px);
+  box-shadow: 0 0 60px rgba(56,189,248,0.25);
 }
 
 .card-header {
-  padding: 20px 25px;
+  padding: 25px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   background: rgba(56,189,248,0.05);
-  border-bottom: 1px solid #1f2937;
 }
 
 .card-header h2 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  color: #38bdf8;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(56,189,248,0.15);
   color: #38bdf8;
 }
 
 .card-body {
-  padding: 25px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 30px;
 }
 
 .card-body ul {
-  padding-left: 18px;
+  list-style: none;
+  padding: 0;
   margin: 0;
-  opacity: 0.8;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.8;
+  opacity: 0.8;
+}
+
+.card-body li {
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.card-body li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #38bdf8;
 }
 
 .dev-card:hover .card-body ul {
@@ -127,21 +169,24 @@ h1 {
 </div>
 
 <h1>My Development</h1>
-<p class="subtitle">A breakdown of servers and communities I’ve developed custom systems and plugins for.</p>
+<p class="subtitle">A short showcase of server development work I’ve delivered.</p>
 
 <div class="dev-scroll">
 
   <div class="dev-card">
     <div class="card-header">
       <h2>OceHub</h2>
+      <span class="badge">Public SMP & Events Network</span>
     </div>
     <div class="card-body">
       <ul>
         <li>Levels SMP plugin</li>
         <li>Custom crafting limiter</li>
         <li>Custom maces plugin</li>
-        <li>KOTH plugin</li>
-        <li>General gameplay skripting</li>
+        <li>King of The Hill plugin</li>
+        <li>Survival Games plugin</li>
+        <li>Velocity cross-server broadcasting plugin</li>
+        <li>Other basic gameplay skripting</li>
       </ul>
     </div>
   </div>
@@ -149,13 +194,15 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>NetheriteSMP</h2>
+      <span class="badge">Survival Network</span>
     </div>
     <div class="card-body">
       <ul>
         <li>Chat Formatter skript</li>
         <li>Staff Mode skript</li>
+        <li>Harvester Hoe skript</li>
         <li>Custom EcoEnchants configuration</li>
-        <li>Custom EcoArmour configuration</li>
+        <li>Custom EcoArmour Configuration</li>
       </ul>
     </div>
   </div>
@@ -163,12 +210,15 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>Confliction SMP</h2>
+      <span class="badge">Public SMP</span>
     </div>
     <div class="card-body">
       <ul>
-        <li>Fully custom Classes plugin</li>
-        <li>Unique abilities system</li>
-        <li>Structured progression mechanics</li>
+        <li>Fully custom classes plugin</li>
+        <li>Unique attribute based framework</li>
+        <li>See below document for more info.</li>
+        <li>https://docs.google.com/document/d/15WZ01Fwi_6O8xo1ZnH1Fyb2XMHVryMtT4oZoQ6DV_Vk</li>
+        <li></li>
       </ul>
     </div>
   </div>
@@ -176,12 +226,13 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>FarmINC</h2>
+      <span class="badge">Public Minehut Server</span>
     </div>
     <div class="card-body">
       <ul>
         <li>Simple replant skript</li>
         <li>Fully custom Pets plugin</li>
-        <li>Custom gameplay mechanics</li>
+        <li>Custom gameplay enhancements</li>
       </ul>
     </div>
   </div>
