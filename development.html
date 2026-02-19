@@ -14,7 +14,6 @@ body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: #020617;
   color: #e2e8f0;
-  overflow-x: hidden;
   animation: fadeIn 1.2s ease;
 }
 
@@ -39,9 +38,9 @@ body::after { background: #7c3aed; bottom: -200px; right: -200px; }
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: auto;
-  padding: 120px 40px;
+  padding: 120px 80px;
 }
 
 .nav { margin-bottom: 60px; }
@@ -63,7 +62,6 @@ body::after { background: #7c3aed; bottom: -200px; right: -200px; }
 h1 {
   font-size: 52px;
   margin-bottom: 15px;
-  letter-spacing: 1px;
 }
 
 .subtitle {
@@ -72,53 +70,57 @@ h1 {
   font-size: 16px;
 }
 
-.carousel-wrapper {
+.carousel-section {
   position: relative;
-  overflow: hidden;
+  padding: 0 120px;
+}
+
+.carousel-wrapper {
+  overflow: visible;
 }
 
 .dev-scroll {
   display: flex;
   gap: 70px;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
 }
 
 .dev-card {
   flex: 0 0 calc((100% - 140px) / 3);
-  height: 560px;
-  border-radius: 32px;
+  height: 600px;
+  border-radius: 36px;
   background: linear-gradient(160deg, #0b1220, #111827);
   border: 1px solid rgba(255,255,255,0.06);
-  transition: 0.4s cubic-bezier(.2,.8,.2,1);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transition: 0.45s cubic-bezier(.2,.8,.2,1);
 }
 
 .dev-card:hover {
-  transform: translateY(-18px) scale(1.06);
-  box-shadow: 0 30px 120px rgba(56,189,248,0.25);
+  transform: translateY(-25px) scale(1.12);
+  box-shadow: 0 40px 160px rgba(56,189,248,0.35);
+  z-index: 5;
 }
 
 .card-header {
-  padding: 35px;
+  padding: 40px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.02);
 }
 
 .card-header h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 26px;
   color: #38bdf8;
 }
 
 .server-subtitle {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 14px;
   opacity: 0.6;
 }
 
 .badge-row {
-  margin-top: 14px;
+  margin-top: 16px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -138,15 +140,13 @@ h1 {
 .badge.skript { background: rgba(124,58,237,0.15); color: #a78bfa; }
 .badge.config { background: rgba(245,158,11,0.15); color: #f59e0b; }
 
-.card-body { padding: 35px; }
+.card-body { padding: 40px; }
 
 .card-body ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 15px;
   line-height: 2;
-  opacity: 0.85;
 }
 
 .card-body li {
@@ -165,42 +165,40 @@ h1 {
 .card-body a {
   color: #38bdf8;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: 0.3s ease;
 }
 
-.card-body a:hover {
-  border-bottom: 1px solid #38bdf8;
-}
-
-.carousel-controls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  margin-bottom: 40px;
-}
-
-.carousel-controls button {
-  background: rgba(56,189,248,0.1);
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   border: 1px solid rgba(56,189,248,0.4);
+  background: rgba(56,189,248,0.08);
   color: #38bdf8;
-  padding: 10px 16px;
-  font-size: 18px;
-  border-radius: 12px;
+  font-size: 22px;
   cursor: pointer;
+  backdrop-filter: blur(10px);
   transition: 0.3s ease;
+  z-index: 10;
 }
 
-.carousel-controls button:hover {
+.carousel-btn:hover {
   background: #38bdf8;
   color: #020617;
 }
 
-@media (max-width: 900px) {
+.carousel-btn.left { left: 20px; }
+.carousel-btn.right { right: 20px; }
+
+@media (max-width: 1000px) {
+  .carousel-section { padding: 0 20px; }
   .dev-card {
     flex: 0 0 100%;
     height: auto;
   }
+  .carousel-btn { display: none; }
 }
 </style>
 </head>
@@ -215,107 +213,105 @@ h1 {
 <h1>My Development</h1>
 <p class="subtitle">A showcase of server development work I’ve delivered.</p>
 
-<div class="carousel-controls">
-  <button id="prevBtn">←</button>
-  <button id="nextBtn">→</button>
-</div>
+<div class="carousel-section">
+<button class="carousel-btn left" id="prevBtn">←</button>
+<button class="carousel-btn right" id="nextBtn">→</button>
 
 <div class="carousel-wrapper">
 <div class="dev-scroll">
 
-  <!-- ALL YOUR CARDS UNCHANGED -->
-  <!-- (keeping your exact wording as requested) -->
+<!-- YOUR CARDS (unchanged wording) -->
 
-  <!-- OceHub -->
-  <div class="dev-card">
-    <div class="card-header">
-      <h2>OceHub</h2>
-      <div class="server-subtitle">OCE based network with a Public SMP & Events Server</div>
-      <div class="badge-row">
-        <span class="badge paid">PAID</span>
-        <span class="badge plugin">PLUGIN</span>
-        <span class="badge skript">SKRIPT</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <ul>
-        <li>Levels SMP plugin</li>
-        <li>Custom crafting limiter</li>
-        <li>Custom maces plugin</li>
-        <li>King of The Hill plugin</li>
-        <li>Survival Games plugin</li>
-        <li>Velocity cross-server broadcasting plugin</li>
-        <li>Other basic skripts like EssentialsX shortcuts</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- NetheriteSMP -->
-  <div class="dev-card">
-    <div class="card-header">
-      <h2>NetheriteSMP</h2>
-      <div class="server-subtitle">Survival Network</div>
-      <div class="badge-row">
-        <span class="badge paid">PAID</span>
-        <span class="badge skript">SKRIPT</span>
-        <span class="badge config">CONFIG</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <ul>
-        <li>Chat Formatter skript</li>
-        <li>Staff Mode skript</li>
-        <li>Harvester Hoe skript</li>
-        <li>Custom EcoEnchants configuration</li>
-        <li>Custom EcoArmour configuration</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Confliction SMP -->
-  <div class="dev-card">
-    <div class="card-header">
-      <h2>Confliction SMP</h2>
-      <div class="server-subtitle">Public SMP</div>
-      <div class="badge-row">
-        <span class="badge free">FREE</span>
-        <span class="badge plugin">PLUGIN</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <ul>
-        <li>Fully custom classes plugin</li>
-        <li>Unique attribute based system</li>
-        <li>See below document for more info.</li>
-        <li><a href="https://docs.google.com/document/d/15WZ01Fwi_6O8xo1ZnH1Fyb2XMHVryMtT4oZoQ6DV_Vk" target="_blank" rel="noopener noreferrer">View full plugin document</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- FarmINC -->
-  <div class="dev-card">
-    <div class="card-header">
-      <h2>FarmINC</h2>
-      <div class="server-subtitle">Public Minehut Server</div>
-      <div class="badge-row">
-        <span class="badge free">FREE</span>
-        <span class="badge plugin">PLUGIN</span>
-        <span class="badge skript">SKRIPT</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <ul>
-        <li>Simple replant skript</li>
-        <li>Fully custom pets plugin</li>
-        <li>Custom TAB Config</li>
-        <li>AjLeaderboards Configuration</li>
-      </ul>
-    </div>
-  </div>
-
+<!-- OceHub -->
+<div class="dev-card">
+<div class="card-header">
+<h2>OceHub</h2>
+<div class="server-subtitle">OCE based network with a Public SMP & Events Server</div>
+<div class="badge-row">
+<span class="badge paid">PAID</span>
+<span class="badge plugin">PLUGIN</span>
+<span class="badge skript">SKRIPT</span>
+</div>
+</div>
+<div class="card-body">
+<ul>
+<li>Levels SMP plugin</li>
+<li>Custom crafting limiter</li>
+<li>Custom maces plugin</li>
+<li>King of The Hill plugin</li>
+<li>Survival Games plugin</li>
+<li>Velocity cross-server broadcasting plugin</li>
+<li>Other basic skripts like EssentialsX shortcuts</li>
+</ul>
 </div>
 </div>
 
+<!-- NetheriteSMP -->
+<div class="dev-card">
+<div class="card-header">
+<h2>NetheriteSMP</h2>
+<div class="server-subtitle">Survival Network</div>
+<div class="badge-row">
+<span class="badge paid">PAID</span>
+<span class="badge skript">SKRIPT</span>
+<span class="badge config">CONFIG</span>
+</div>
+</div>
+<div class="card-body">
+<ul>
+<li>Chat Formatter skript</li>
+<li>Staff Mode skript</li>
+<li>Harvester Hoe skript</li>
+<li>Custom EcoEnchants configuration</li>
+<li>Custom EcoArmour configuration</li>
+</ul>
+</div>
+</div>
+
+<!-- Confliction SMP -->
+<div class="dev-card">
+<div class="card-header">
+<h2>Confliction SMP</h2>
+<div class="server-subtitle">Public SMP</div>
+<div class="badge-row">
+<span class="badge free">FREE</span>
+<span class="badge plugin">PLUGIN</span>
+</div>
+</div>
+<div class="card-body">
+<ul>
+<li>Fully custom classes plugin</li>
+<li>Unique attribute based system</li>
+<li>See below document for more info.</li>
+<li><a href="https://docs.google.com/document/d/15WZ01Fwi_6O8xo1ZnH1Fyb2XMHVryMtT4oZoQ6DV_Vk" target="_blank" rel="noopener noreferrer">View full plugin document</a></li>
+</ul>
+</div>
+</div>
+
+<!-- FarmINC -->
+<div class="dev-card">
+<div class="card-header">
+<h2>FarmINC</h2>
+<div class="server-subtitle">Public Minehut Server</div>
+<div class="badge-row">
+<span class="badge free">FREE</span>
+<span class="badge plugin">PLUGIN</span>
+<span class="badge skript">SKRIPT</span>
+</div>
+</div>
+<div class="card-body">
+<ul>
+<li>Simple replant skript</li>
+<li>Fully custom pets plugin</li>
+<li>Custom TAB Config</li>
+<li>AjLeaderboards Configuration</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
 </div>
 
 <script>
@@ -323,7 +319,7 @@ const slider = document.querySelector('.dev-scroll');
 const nextBtn = document.getElementById('nextBtn');
 const prevBtn = document.getElementById('prevBtn');
 
-function moveNext() {
+function next() {
   const first = slider.firstElementChild;
   slider.style.transform = "translateX(calc(-100% / 3 - 46.6px))";
   slider.addEventListener("transitionend", function handler() {
@@ -331,24 +327,50 @@ function moveNext() {
     slider.style.transform = "translateX(0)";
     slider.appendChild(first);
     slider.offsetHeight;
-    slider.style.transition = "transform 0.4s ease";
+    slider.style.transition = "transform 0.45s cubic-bezier(.2,.8,.2,1)";
     slider.removeEventListener("transitionend", handler);
   });
 }
 
-function movePrev() {
+function prev() {
   const last = slider.lastElementChild;
   slider.insertBefore(last, slider.firstElementChild);
   slider.style.transition = "none";
   slider.style.transform = "translateX(calc(-100% / 3 - 46.6px))";
   requestAnimationFrame(() => {
-    slider.style.transition = "transform 0.4s ease";
+    slider.style.transition = "transform 0.45s cubic-bezier(.2,.8,.2,1)";
     slider.style.transform = "translateX(0)";
   });
 }
 
-nextBtn.addEventListener("click", moveNext);
-prevBtn.addEventListener("click", movePrev);
+nextBtn.onclick = next;
+prevBtn.onclick = prev;
+
+let startX = 0;
+let isDragging = false;
+
+slider.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", e => {
+  let diff = e.changedTouches[0].clientX - startX;
+  if (diff > 50) prev();
+  if (diff < -50) next();
+});
+
+slider.addEventListener("mousedown", e => {
+  isDragging = true;
+  startX = e.clientX;
+});
+
+slider.addEventListener("mouseup", e => {
+  if (!isDragging) return;
+  isDragging = false;
+  let diff = e.clientX - startX;
+  if (diff > 50) prev();
+  if (diff < -50) next();
+});
 </script>
 
 </body>
