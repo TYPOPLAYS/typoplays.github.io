@@ -7,9 +7,7 @@
 <link rel="icon" type="image/webp" href="profile.webp">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -32,17 +30,8 @@ body::after {
   z-index: -1;
 }
 
-body::before {
-  background: #38bdf8;
-  top: -150px;
-  left: -150px;
-}
-
-body::after {
-  background: #7c3aed;
-  bottom: -200px;
-  right: -200px;
-}
+body::before { background: #38bdf8; top: -150px; left: -150px; }
+body::after { background: #7c3aed; bottom: -200px; right: -200px; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -55,9 +44,7 @@ body::after {
   padding: 120px 40px;
 }
 
-.nav {
-  margin-bottom: 60px;
-}
+.nav { margin-bottom: 60px; }
 
 .nav a {
   text-decoration: none;
@@ -118,21 +105,6 @@ h1 {
   box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
 
-.dev-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 80% 20%, rgba(56,189,248,0.25), transparent 60%);
-  opacity: 0;
-  transition: 0.4s ease;
-  pointer-events: none;
-}
-
-.dev-card:hover::after {
-  opacity: 1;
-}
-
 .dev-card:hover {
   transform: translateY(-18px) scale(1.06);
   box-shadow: 0 30px 120px rgba(56,189,248,0.25);
@@ -150,15 +122,50 @@ h1 {
   color: #38bdf8;
 }
 
+.server-subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.badge-row {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .badge {
-  display: inline-block;
-  margin-top: 12px;
-  margin-right: 8px;
-  font-size: 12px;
+  font-size: 11px;
   padding: 6px 14px;
   border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.badge.paid {
+  background: rgba(34,197,94,0.15);
+  color: #22c55e;
+}
+
+.badge.free {
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
+}
+
+.badge.plugin {
   background: rgba(56,189,248,0.15);
   color: #38bdf8;
+}
+
+.badge.skript {
+  background: rgba(124,58,237,0.15);
+  color: #a78bfa;
+}
+
+.badge.config {
+  background: rgba(245,158,11,0.15);
+  color: #f59e0b;
 }
 
 .card-body {
@@ -213,13 +220,8 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .container {
-    padding: 80px 20px;
-  }
-
-  h1 {
-    font-size: 38px;
-  }
+  .container { padding: 80px 20px; }
+  h1 { font-size: 38px; }
 
   .dev-scroll {
     flex-direction: column;
@@ -237,9 +239,7 @@ h1 {
     transform: translateY(-8px) scale(1.02);
   }
 
-  .scroll-hint {
-    display: none;
-  }
+  .scroll-hint { display: none; }
 }
 </style>
 </head>
@@ -259,8 +259,11 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>OceHub</h2>
-      <span class="badge">OCE based network with a Public SMP & Events Server</span>
-      <span class="badge">PAID</span>
+      <div class="server-subtitle">OCE based network with a Public SMP & Events Server</div>
+      <div class="badge-row">
+        <span class="badge paid">PAID</span>
+        <span class="badge plugin">PLUGIN</span>
+      </div>
     </div>
     <div class="card-body">
       <ul>
@@ -278,8 +281,12 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>NetheriteSMP</h2>
-      <span class="badge">Survival Network</span>
-      <span class="badge">PAID</span>
+      <div class="server-subtitle">Survival Network</div>
+      <div class="badge-row">
+        <span class="badge paid">PAID</span>
+        <span class="badge skript">SKRIPT</span>
+        <span class="badge config">CONFIG</span>
+      </div>
     </div>
     <div class="card-body">
       <ul>
@@ -295,8 +302,11 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>Confliction SMP</h2>
-      <span class="badge">Public SMP</span>
-      <span class="badge">FREE</span>
+      <div class="server-subtitle">Public SMP</div>
+      <div class="badge-row">
+        <span class="badge free">FREE</span>
+        <span class="badge plugin">PLUGIN</span>
+      </div>
     </div>
     <div class="card-body">
       <ul>
@@ -311,8 +321,12 @@ h1 {
   <div class="dev-card">
     <div class="card-header">
       <h2>FarmINC</h2>
-      <span class="badge">Public Minehut Server</span>
-      <span class="badge">FREE</span>
+      <div class="server-subtitle">Public Minehut Server</div>
+      <div class="badge-row">
+        <span class="badge free">FREE</span>
+        <span class="badge skript">SKRIPT</span>
+        <span class="badge plugin">PLUGIN</span>
+      </div>
     </div>
     <div class="card-body">
       <ul>
