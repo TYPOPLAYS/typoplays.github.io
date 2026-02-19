@@ -7,10 +7,14 @@
 <link rel="icon" type="image/webp" href="profile.webp">
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #0f172a, #020617);
+  background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
   color: #e2e8f0;
   animation: fadeIn 1.2s ease;
 }
@@ -21,56 +25,83 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1050px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 90px 20px;
+}
+
+.nav {
+  margin-bottom: 40px;
 }
 
 .nav a {
   text-decoration: none;
   color: #38bdf8;
   border: 1px solid #38bdf8;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
   transition: 0.3s ease;
+  font-size: 14px;
 }
 
 .nav a:hover {
   background: #38bdf8;
   color: #0f172a;
+  box-shadow: 0 0 20px rgba(56,189,248,0.4);
 }
 
 h1 {
-  margin-top: 25px;
-  margin-bottom: 40px;
+  margin-top: 0;
+  margin-bottom: 50px;
+  font-size: 42px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: #38bdf8;
+  margin-top: 12px;
+  border-radius: 3px;
 }
 
 .card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .card {
   display: flex;
   gap: 25px;
   align-items: center;
-  background: #111827;
-  padding: 25px;
-  border-radius: 14px;
+  background: linear-gradient(145deg, #111827, #0f172a);
+  padding: 28px;
+  border-radius: 18px;
   border: 1px solid #1f2937;
-  margin-bottom: 25px;
-  transition: 0.3s ease;
+  margin-bottom: 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
 }
 
 .card:hover {
   border-color: #38bdf8;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(56,189,248,0.15);
 }
 
 .card img {
   width: 120px;
   height: 120px;
   object-fit: contain;
+  background: #0b1220;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  flex-shrink: 0;
 }
 
 .card-content {
@@ -80,12 +111,43 @@ h1 {
 .card-content h2 {
   margin: 0 0 8px 0;
   color: #38bdf8;
+  font-size: 20px;
 }
 
 .card-content p {
   margin: 6px 0;
   opacity: 0.85;
   line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+
+  .container {
+    padding: 70px 18px;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .card img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .card-content h2 {
+    font-size: 18px;
+  }
+
 }
 </style>
 </head>
