@@ -72,32 +72,21 @@ h1 {
   font-size: 16px;
 }
 
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .dev-scroll {
   display: flex;
   gap: 70px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 50px 10px 100px 10px;
-  cursor: grab;
-}
-
-.dev-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-
-.dev-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
+  transition: transform 0.4s ease;
 }
 
 .dev-card {
-  position: relative;
-  min-width: 420px;
+  flex: 0 0 calc((100% - 140px) / 3);
   height: 560px;
   border-radius: 32px;
-  flex-shrink: 0;
-  scroll-snap-align: start;
   background: linear-gradient(160deg, #0b1220, #111827);
   border: 1px solid rgba(255,255,255,0.06);
   transition: 0.4s cubic-bezier(.2,.8,.2,1);
@@ -143,34 +132,13 @@ h1 {
   letter-spacing: 1px;
 }
 
-.badge.paid {
-  background: rgba(34,197,94,0.15);
-  color: #22c55e;
-}
+.badge.paid { background: rgba(34,197,94,0.15); color: #22c55e; }
+.badge.free { background: rgba(239,68,68,0.15); color: #ef4444; }
+.badge.plugin { background: rgba(56,189,248,0.15); color: #38bdf8; }
+.badge.skript { background: rgba(124,58,237,0.15); color: #a78bfa; }
+.badge.config { background: rgba(245,158,11,0.15); color: #f59e0b; }
 
-.badge.free {
-  background: rgba(239,68,68,0.15);
-  color: #ef4444;
-}
-
-.badge.plugin {
-  background: rgba(56,189,248,0.15);
-  color: #38bdf8;
-}
-
-.badge.skript {
-  background: rgba(124,58,237,0.15);
-  color: #a78bfa;
-}
-
-.badge.config {
-  background: rgba(245,158,11,0.15);
-  color: #f59e0b;
-}
-
-.card-body {
-  padding: 35px;
-}
+.card-body { padding: 35px; }
 
 .card-body ul {
   list-style: none;
@@ -179,7 +147,6 @@ h1 {
   font-size: 15px;
   line-height: 2;
   opacity: 0.85;
-  transition: 0.3s ease;
 }
 
 .card-body li {
@@ -195,11 +162,6 @@ h1 {
   color: #38bdf8;
 }
 
-.dev-card:hover .card-body ul {
-  opacity: 1;
-  transform: scale(1.04);
-}
-
 .card-body a {
   color: #38bdf8;
   text-decoration: none;
@@ -209,37 +171,36 @@ h1 {
 
 .card-body a:hover {
   border-bottom: 1px solid #38bdf8;
-  text-shadow: 0 0 12px rgba(56,189,248,0.9);
 }
 
-.scroll-hint {
-  margin-top: 25px;
-  font-size: 13px;
-  opacity: 0.5;
-  letter-spacing: 1px;
+.carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.carousel-controls button {
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.4);
+  color: #38bdf8;
+  padding: 10px 16px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.carousel-controls button:hover {
+  background: #38bdf8;
+  color: #020617;
 }
 
 @media (max-width: 900px) {
-  .container { padding: 80px 20px; }
-  h1 { font-size: 38px; }
-
-  .dev-scroll {
-    flex-direction: column;
-    overflow-x: hidden;
-    gap: 40px;
-    padding: 0;
-  }
-
   .dev-card {
-    min-width: 100%;
+    flex: 0 0 100%;
     height: auto;
   }
-
-  .dev-card:hover {
-    transform: translateY(-8px) scale(1.02);
-  }
-
-  .scroll-hint { display: none; }
 }
 </style>
 </head>
@@ -254,8 +215,18 @@ h1 {
 <h1>My Development</h1>
 <p class="subtitle">A showcase of server development work I’ve delivered.</p>
 
+<div class="carousel-controls">
+  <button id="prevBtn">←</button>
+  <button id="nextBtn">→</button>
+</div>
+
+<div class="carousel-wrapper">
 <div class="dev-scroll">
 
+  <!-- ALL YOUR CARDS UNCHANGED -->
+  <!-- (keeping your exact wording as requested) -->
+
+  <!-- OceHub -->
   <div class="dev-card">
     <div class="card-header">
       <h2>OceHub</h2>
@@ -279,6 +250,7 @@ h1 {
     </div>
   </div>
 
+  <!-- NetheriteSMP -->
   <div class="dev-card">
     <div class="card-header">
       <h2>NetheriteSMP</h2>
@@ -300,6 +272,7 @@ h1 {
     </div>
   </div>
 
+  <!-- Confliction SMP -->
   <div class="dev-card">
     <div class="card-header">
       <h2>Confliction SMP</h2>
@@ -319,6 +292,7 @@ h1 {
     </div>
   </div>
 
+  <!-- FarmINC -->
   <div class="dev-card">
     <div class="card-header">
       <h2>FarmINC</h2>
@@ -340,41 +314,41 @@ h1 {
   </div>
 
 </div>
-
-<p class="scroll-hint">← Drag or scroll to explore →</p>
+</div>
 
 </div>
 
 <script>
 const slider = document.querySelector('.dev-scroll');
-let isDown = false;
-let startX;
-let scrollLeft;
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
 
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.style.cursor = 'grabbing';
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
+function moveNext() {
+  const first = slider.firstElementChild;
+  slider.style.transform = "translateX(calc(-100% / 3 - 46.6px))";
+  slider.addEventListener("transitionend", function handler() {
+    slider.style.transition = "none";
+    slider.style.transform = "translateX(0)";
+    slider.appendChild(first);
+    slider.offsetHeight;
+    slider.style.transition = "transform 0.4s ease";
+    slider.removeEventListener("transitionend", handler);
+  });
+}
 
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.style.cursor = 'grab';
-});
+function movePrev() {
+  const last = slider.lastElementChild;
+  slider.insertBefore(last, slider.firstElementChild);
+  slider.style.transition = "none";
+  slider.style.transform = "translateX(calc(-100% / 3 - 46.6px))";
+  requestAnimationFrame(() => {
+    slider.style.transition = "transform 0.4s ease";
+    slider.style.transform = "translateX(0)";
+  });
+}
 
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.style.cursor = 'grab';
-});
-
-slider.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 1.5;
-  slider.scrollLeft = scrollLeft - walk;
-});
+nextBtn.addEventListener("click", moveNext);
+prevBtn.addEventListener("click", movePrev);
 </script>
 
 </body>
