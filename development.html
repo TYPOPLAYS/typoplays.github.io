@@ -12,26 +12,11 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #020617;
+  background: linear-gradient(135deg, #0f172a, #020617);
   color: #e2e8f0;
   animation: fadeIn 1.2s ease;
   overflow-x: hidden;
 }
-
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.15;
-  z-index: -1;
-}
-
-body::before { background: #38bdf8; top: -150px; left: -150px; }
-body::after { background: #7c3aed; bottom: -200px; right: -200px; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -39,7 +24,7 @@ body::after { background: #7c3aed; bottom: -200px; right: -200px; }
 }
 
 .container {
-  max-width: 1500px;
+  max-width: 1000px;
   margin: auto;
   padding: 100px 40px;
 }
