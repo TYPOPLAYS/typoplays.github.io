@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Typoplays | My Development</title>
+<title>Typoplays | Development</title>
 <link rel="icon" type="image/png" href="profile.png">
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -15,7 +17,6 @@ body {
   background: linear-gradient(135deg, #0f172a, #020617);
   color: #e2e8f0;
   animation: fadeIn 1.2s ease;
-  overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -24,94 +25,126 @@ body {
 }
 
 .container {
-  max-width: 1600px;
+  max-width: 1000px;
   margin: auto;
-  padding: 100px 40px;
+  padding: 80px 20px;
 }
 
-.nav { margin-bottom: 50px; }
+.nav {
+  margin-bottom: 30px;
+}
 
 .nav a {
   text-decoration: none;
   color: #38bdf8;
   border: 1px solid #38bdf8;
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
   transition: 0.3s ease;
 }
 
 .nav a:hover {
   background: #38bdf8;
-  color: #020617;
+  color: #0f172a;
+  box-shadow: 0 0 15px rgba(56,189,248,0.4);
 }
 
 h1 {
-  font-size: 48px;
-  margin-bottom: 15px;
-}
-
-.subtitle {
-  opacity: 0.7;
-  margin-bottom: 60px;
-  font-size: 16px;
-}
-
-.carousel-section {
+  margin-top: 25px;
+  margin-bottom: 45px;
+  font-size: 42px;
+  letter-spacing: 1px;
   position: relative;
 }
 
-.carousel-wrapper {
-  overflow-y: visible;
-  overflow-x: hidden;
-  padding: 40px 0;
-}
-
-.dev-scroll {
-  display: flex;
-  gap: 40px;
-  transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
-}
-
-.dev-card {
-  flex: 0 0 calc((100% - 80px) / 3);
-  min-height: 520px;
-  border-radius: 28px;
-  background: #111827;
-  border: 10px solid #1f2937;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  transition: 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.dev-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 30px 100px rgba(56,189,248,0.25);
-}
-
-.card-header {
-  padding: 30px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.card-header h2 {
-  margin: 0;
-  font-size: 22px;
-  color: #38bdf8;
-  word-break: break-word;
-}
-
-.server-subtitle {
+h1::after {
+  content: "";
+  display: block;
+  width: 65px;
+  height: 3px;
+  background: #38bdf8;
   margin-top: 10px;
-  font-size: 14px;
+  border-radius: 3px;
+}
+
+h2.section-title {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #38bdf8;
+}
+
+/* Stats */
+
+.stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 180px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 22px 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+.stat-box:hover {
+  border-color: #38bdf8;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(56,189,248,0.15);
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.stat-label {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+/* Cards */
+
+.card {
+  background: #111827;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  margin-bottom: 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+.card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(56,189,248,0.15);
+}
+
+.card h2 {
+  margin: 0 0 8px 0;
+  color: #38bdf8;
+  font-size: 20px;
+}
+
+.card p.meta {
+  margin: 4px 0 14px 0;
   opacity: 0.6;
-  line-height: 1.5;
-  word-break: break-word;
+  font-size: 13px;
 }
 
 .badge-row {
-  margin-top: 14px;
+  margin-bottom: 18px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -131,74 +164,42 @@ h1 {
 .badge.skript { background: rgba(124,58,237,0.15); color: #a78bfa; }
 .badge.config { background: rgba(245,158,11,0.15); color: #f59e0b; }
 
-.card-body {
-  padding: 30px;
-  flex: 1;
-}
-
-.card-body ul {
+.card ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  line-height: 1.8;
+  line-height: 1.7;
+  font-size: 14px;
 }
 
-.card-body li {
-  margin-bottom: 10px;
+.card li {
+  margin-bottom: 8px;
   padding-left: 18px;
   position: relative;
-  word-break: break-word;
+  opacity: 0.9;
 }
 
-.card-body li::before {
+.card li::before {
   content: "▹";
   position: absolute;
   left: 0;
   color: #38bdf8;
 }
 
-.card-body a {
+.card a {
   color: #38bdf8;
   text-decoration: none;
 }
 
-.carousel-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid rgba(56,189,248,0.4);
-  background: rgba(56,189,248,0.08);
-  color: #38bdf8;
-  font-size: 18px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: 0.3s ease;
-  z-index: 5;
+.card a:hover {
+  text-decoration: underline;
 }
 
-.carousel-btn:hover {
-  background: #38bdf8;
-  color: #020617;
-}
+/* Responsive */
 
-.carousel-btn.left { left: -70px; }
-.carousel-btn.right { right: -70px; }
-
-@media (max-width: 1000px) {
-  .dev-card {
-    flex: 0 0 100%;
-  }
-
-  .carousel-btn {
-    display: none;
-  }
-
-  .container {
-    padding: 60px 20px;
-  }
+@media (max-width: 700px) {
+  h1 { font-size: 34px; }
+  .card { padding: 22px; }
 }
 </style>
 </head>
@@ -211,162 +212,93 @@ h1 {
 </div>
 
 <h1>My Development</h1>
-<p class="subtitle">A showcase of server development work I’ve delivered.</p>
 
-<div class="carousel-section">
-<button class="carousel-btn left" id="prevBtn">←</button>
-<button class="carousel-btn right" id="nextBtn">→</button>
+<div class="stats">
+  <div class="stat-box">
+    <div class="stat-number">4+</div>
+    <div class="stat-label">Networks Built</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number">20+</div>
+    <div class="stat-label">Custom Systems</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
 
-<div class="carousel-wrapper">
-<div class="dev-scroll">
+<h2 class="section-title">Premium Projects</h2>
 
-<!-- OceHub -->
-<div class="dev-card">
-<div class="card-header">
-<h2>OceHub</h2>
-<div class="server-subtitle">OCE based network with a Public SMP & Events Server</div>
+<div class="card">
+<h2>OceHub — Network Development</h2>
+<p class="meta">OCE Based Network • Public SMP & Events</p>
 <div class="badge-row">
 <span class="badge paid">PAID</span>
 <span class="badge plugin">PLUGIN</span>
 <span class="badge skript">SKRIPT</span>
 </div>
-</div>
-<div class="card-body">
 <ul>
-<li>Levels SMP plugin</li>
-<li>Custom crafting limiter</li>
+<li>Levels SMP core plugin</li>
+<li>Custom crafting limiter system</li>
 <li>Custom maces plugin</li>
-<li>King of The Hill plugin</li>
-<li>Survival Games plugin</li>
-<li>Velocity cross-server broadcasting plugin</li>
-<li>Other basic skripts like EssentialsX shortcuts</li>
+<li>King of The Hill event plugin</li>
+<li>Survival Games system</li>
+<li>Velocity cross-server broadcasting</li>
+<li>Utility skripts & performance optimisations</li>
 </ul>
 </div>
-</div>
 
-<!-- NetheriteSMP -->
-<div class="dev-card">
-<div class="card-header">
-<h2>NetheriteSMP</h2>
-<div class="server-subtitle">Survival Network</div>
+<div class="card">
+<h2>NetheriteSMP — Survival Network</h2>
+<p class="meta">Long-term Management & Custom Systems</p>
 <div class="badge-row">
 <span class="badge paid">PAID</span>
 <span class="badge skript">SKRIPT</span>
 <span class="badge config">CONFIG</span>
 </div>
-</div>
-<div class="card-body">
 <ul>
-<li>Chat Formatter skript</li>
-<li>Staff Mode skript</li>
-<li>Harvester Hoe skript</li>
-<li>Custom EcoEnchants configuration</li>
-<li>Custom EcoArmour configuration</li>
+<li>Chat formatter system</li>
+<li>Staff mode system</li>
+<li>Harvester Hoe automation</li>
+<li>EcoEnchants configuration overhaul</li>
+<li>EcoArmour configuration customisation</li>
 </ul>
 </div>
-</div>
 
-<!-- Confliction SMP -->
-<div class="dev-card">
-<div class="card-header">
-<h2>Confliction SMP</h2>
-<div class="server-subtitle">Public SMP</div>
+<h2 class="section-title">Free Projects</h2>
+
+<div class="card">
+<h2>Confliction SMP — Classes System</h2>
+<p class="meta">Public SMP • Attribute-Based Combat</p>
 <div class="badge-row">
 <span class="badge free">FREE</span>
 <span class="badge plugin">PLUGIN</span>
 </div>
-</div>
-<div class="card-body">
 <ul>
 <li>Fully custom classes plugin</li>
-<li>Unique attribute based system</li>
-<li>See below document for more info.</li>
-<li><a href="https://docs.google.com/document/d/15WZ01Fwi_6O8xo1ZnH1Fyb2XMHVryMtT4oZoQ6DV_Vk" target="_blank" rel="noopener noreferrer">View full plugin document</a></li>
+<li>Unique attribute-driven progression</li>
+<li>Combat scaling & balancing system</li>
+<li><a href="https://docs.google.com/document/d/15WZ01Fwi_6O8xo1ZnH1Fyb2XMHVryMtT4oZoQ6DV_Vk" target="_blank">View full plugin document</a></li>
 </ul>
 </div>
-</div>
 
-<!-- FarmINC -->
-<div class="dev-card">
-<div class="card-header">
-<h2>FarmINC</h2>
-<div class="server-subtitle">Public Minehut Server</div>
+<div class="card">
+<h2>FarmINC — Minehut Server</h2>
+<p class="meta">Public Server • Gameplay Enhancements</p>
 <div class="badge-row">
 <span class="badge free">FREE</span>
 <span class="badge plugin">PLUGIN</span>
 <span class="badge skript">SKRIPT</span>
 </div>
-</div>
-<div class="card-body">
 <ul>
-<li>Simple replant skript</li>
+<li>Simple replant automation</li>
 <li>Fully custom pets plugin</li>
-<li>Custom TAB Config</li>
-<li>AjLeaderboards Configuration</li>
+<li>Custom TAB configuration</li>
+<li>AjLeaderboards configuration</li>
 </ul>
 </div>
-</div>
 
 </div>
-</div>
-</div>
-</div>
-
-<script>
-const slider = document.querySelector('.dev-scroll');
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
-
-let cardWidth;
-
-function updateWidth() {
-  const card = slider.querySelector('.dev-card');
-  const gap = 40;
-  cardWidth = card.getBoundingClientRect().width + gap;
-}
-
-window.addEventListener('resize', updateWidth);
-updateWidth();
-
-function moveNext() {
-  updateWidth();
-  slider.style.transform = `translateX(-${cardWidth}px)`;
-
-  slider.addEventListener('transitionend', function handler() {
-    slider.appendChild(slider.firstElementChild);
-    slider.style.transition = "none";
-    slider.style.transform = "translateX(0)";
-    slider.offsetHeight;
-    slider.style.transition = "transform 0.45s cubic-bezier(.2,.8,.2,1)";
-    slider.removeEventListener("transitionend", handler);
-  });
-}
-
-function movePrev() {
-  updateWidth();
-  slider.insertBefore(slider.lastElementChild, slider.firstElementChild);
-  slider.style.transition = "none";
-  slider.style.transform = `translateX(-${cardWidth}px)`;
-  slider.offsetHeight;
-  slider.style.transition = "transform 0.45s cubic-bezier(.2,.8,.2,1)";
-  slider.style.transform = "translateX(0)";
-}
-
-nextBtn.onclick = moveNext;
-prevBtn.onclick = movePrev;
-
-let startX = 0;
-
-slider.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-slider.addEventListener("touchend", e => {
-  const diff = e.changedTouches[0].clientX - startX;
-  if (diff > 60) movePrev();
-  if (diff < -60) moveNext();
-});
-</script>
-
 </body>
 </html>
