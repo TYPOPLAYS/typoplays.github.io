@@ -20,26 +20,38 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Improved Navbar */
+
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 20px;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid #1f2937;
+  gap: 30px;
+  padding: 18px 20px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(56,189,248,0.15);
 }
 
 .navbar a {
   text-decoration: none;
   color: #94a3b8;
   font-size: 14px;
-  transition: 0.3s ease;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .navbar a:hover {
   color: #38bdf8;
+  background: rgba(56,189,248,0.08);
 }
+
+/* Layout */
 
 .container {
   max-width: 1000px;
@@ -140,19 +152,30 @@ h1 {
   color: #38bdf8;
 }
 
+/* Mobile Improvements */
+
 @media (max-width: 768px) {
+
+  .navbar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 18px;
+    padding: 14px 15px;
+    scrollbar-width: none;
+  }
+
+  .navbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 15px;
   }
 
   .profile {
     width: 70px;
     height: 70px;
-  }
-
-  .hero-text {
-    text-align: left;
   }
 
   h1 {
@@ -182,6 +205,7 @@ h1 {
   <a href="vouches">Vouches</a>
   <a href="skripts">Skripts</a>
   <a href="development">My Development</a>
+  <a href="projects">Current Projects</a>
 </div>
 
 <div class="container">
@@ -222,7 +246,12 @@ h1 {
   <h2>My Development</h2>
   <p>Servers and communities I’ve built custom systems and plugins for.</p>
 </a>
-
+  
+<a href="projects" class="button-card">
+  <h2>Current Projects</h2>
+  <p>A showcase of what im currently working on.</p>
+</a>
+  
 </div>
 
 <div class="socials">
