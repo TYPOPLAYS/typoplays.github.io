@@ -3,84 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Typoplays | Vouches</title>
+<title>Sharcks | Staff Portfolio</title>
 <link rel="icon" type="image/png" href="profile.png">
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #0f172a, #020617);
-  color: #e2e8f0;
-  animation: fadeIn 1.2s ease;
+  color: #f4f4f5;
+  background:
+    linear-gradient(135deg, rgba(255,120,180,0.07) 0%, transparent 40%),
+    linear-gradient(315deg, rgba(120,200,255,0.07) 0%, transparent 40%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 22px
+    ),
+    linear-gradient(135deg, #0c0c12, #101018);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* Layout */
 .container {
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
-  padding: 80px 20px;
-}
-
-.nav {
-  margin-bottom: 40px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #38bdf8;
-  border: 1px solid #38bdf8;
-  padding: 8px 14px;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
-
-.nav a:hover {
-  background: #38bdf8;
-  color: #0f172a;
+  padding: 110px 20px;
 }
 
 h1 {
-  margin-bottom: 15px;
+  font-size: 46px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ff7ab6, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  opacity: 0.7;
-  margin-bottom: 50px;
+  opacity: 0.75;
+  margin-bottom: 70px;
 }
 
+.section {
+  margin-bottom: 100px;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+  font-size: 26px;
+  background: linear-gradient(90deg, #ff7ab6, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.04);
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 28px;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(12px);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #ff7ab6;
+  box-shadow: 0 0 50px rgba(255,122,182,0.2);
+}
+
+.card h3 {
+  margin-bottom: 6px;
+}
+
+.card span {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.card p {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+a.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.inactive {
+  color: #ff5e7e;
+  margin-left: 6px;
+}
+
+/* Vouches */
 .vouch-section {
   margin-bottom: 60px;
 }
 
-.vouch-label {
-  margin-bottom: 15px;
-  opacity: 0.7;
-  font-size: 14px;
+.vouch-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ff9ecf, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .vouch-card {
-  background: #111827;
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid #1f2937;
-  text-align: center;
-  transition: 0.3s ease;
+  height: 260px;
+  background:
+    linear-gradient(135deg, rgba(255,120,180,0.05), rgba(120,200,255,0.05));
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vouch-card::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(255,122,182,0.15), transparent 60%);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.vouch-card:hover::before {
+  opacity: 1;
 }
 
 .vouch-card:hover {
-  border-color: #38bdf8;
-  box-shadow: 0 0 30px rgba(56,189,248,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 0 60px rgba(120,200,255,0.2);
+  border-color: #7dd3fc;
 }
 
 .vouch-card img {
   max-width: 100%;
-  border-radius: 12px;
-  display: block;
-  margin: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Fade Animation */
+.fade {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.footer {
+  margin-top: 120px;
+  opacity: 0.35;
+  font-size: 13px;
+  text-align: center;
 }
 </style>
 </head>
@@ -88,37 +181,102 @@ h1 {
 <body>
 <div class="container">
 
-<div class="nav">
-  <a href="index">← Back to Home</a>
+<h1 class="fade">Sharcks</h1>
+<p class="subtitle fade">
+Discord & Minecraft Staff Manager • Leadership • Systems • Structure
+</p>
+
+<div class="section fade">
+<h2>Professional Summary</h2>
+<div class="card">
+<p>
+Experienced Discord and Minecraft management specialist with leadership roles across both startup and large-scale communities.
+Former Admin at SMP Finder (35,000+ members at departure).
+Currently managing recruitment systems, staff performance standards, documentation frameworks, and operational structure across active communities.
+Focused on long-term sustainability, clarity of hierarchy, and scalable moderation systems.
+</p>
+</div>
 </div>
 
-<h1>Community Vouches</h1>
-<p class="subtitle">Vouches and testamonials from people I’ve worked with.</p>
+<div class="section fade">
+<h2>Current Positions</h2>
 
-<div class="vouch-section">
-  <p class="vouch-label">Sharcks</p>
-  <div class="vouch-card">
-    <img src="vouches/sharcksvouch.webp" alt="Sharcks Vouch">
-  </div>
+<a href="https://discord.gg/astrixstudio" target="_blank" class="card-link">
+<div class="card">
+<h3>Staff Manager — Astrix | Commission Studio</h3>
+<span>1,000 Members</span>
+<p>Responsible for recruitment pipelines, structured interviews, HR documentation, and staff evaluation systems.</p>
 </div>
-  
-<div class="vouch-section">
-  <p class="vouch-label">OneBubble_</p>
-  <div class="vouch-card">
-    <img src="vouches/bubblevouch.webp" alt="Bubble Vouch">
-  </div>
+</a>
+
+<a href="https://discord.gg/ux4efVVNht" target="_blank" class="card-link">
+<div class="card">
+<h3>Manager — Lucnoxity Castle</h3>
+<span>5,200 Members</span>
+<p>Overseeing server operations, staff coordination, and moderation framework stability.</p>
+</div>
+</a>
+
+<a href="https://discord.gg/GqnjZBEGXy" target="_blank" class="card-link">
+<div class="card">
+<h3>Manager — Shady SMP <span class="inactive">(Inactive)</span></h3>
+<span>400 Members</span>
+</div>
+</a>
+
 </div>
 
-<div class="vouch-section">
-  <p class="vouch-label">d7lta</p>
-  <div class="vouch-card">
-    <img src="vouches/d7ltavouch.webp" alt="d7lta Vouch">
-  </div>
+<div class="section fade">
+<h2>Previous Leadership</h2>
+
+<a href="https://discord.gg/smpfinder" target="_blank" class="card-link">
+<div class="card">
+<h3>Former Admin — SMP Finder</h3>
+<span>35,000+ Members at Time of Departure</span>
+<p>Handled partnerships, ticket systems, large-scale moderation, staff oversight, and internal administrative decisions.</p>
+</div>
+</a>
+
+<div class="card">
+<h3>General Manager — PowerVanilla</h3>
+<p>Directed internal staff structure, documentation standards, and promotion hierarchy systems.</p>
 </div>
 
-<p class="subtitle" style="margin-top: 40px;">End of vouches.</p>
-<p class="subtitle" style="margin-top: 40px;">If you would like to leave a vouch, please contact me on <a href="https://discord.com/users/717659207851049010" style="color: #38bdf8; text-decoration: none;">Discord</a>.</p>
+</div>
+
+<div class="section fade">
+<h2>Vouches</h2>
+
+<div class="vouch-section"><div class="vouch-name">Toast</div><div class="vouch-card"><img src="toast.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Bubble</div><div class="vouch-card"><img src="bubble.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Typo</div><div class="vouch-card"><img src="typo.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">iLikee</div><div class="vouch-card"><img src="ilikee.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">James</div><div class="vouch-card"><img src="james.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Dimension</div><div class="vouch-card"><img src="dimension.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Al</div><div class="vouch-card"><img src="al.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Caliber</div><div class="vouch-card"><img src="caliber.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Hugo</div><div class="vouch-card"><img src="hugo.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Hearts</div><div class="vouch-card"><img src="hearts.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Lantis</div><div class="vouch-card"><img src="lantis.png"></div></div>
+<div class="vouch-section"><div class="vouch-name">Toeei</div><div class="vouch-card"><img src="toeei.png"></div></div>
 
 </div>
+</div>
+
+</div>
+
+<script>
+const faders = document.querySelectorAll('.fade');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+faders.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
