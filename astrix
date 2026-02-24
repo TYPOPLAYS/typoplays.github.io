@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrix Studios – Coming Soon</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.grid {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 100vw;
+    height: 100vh;
+}
+
+.grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+}
+
+.content {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 72px;
+    letter-spacing: 6px;
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 26px;
+    opacity: 0.85;
+    letter-spacing: 3px;
+}
+</style>
+</head>
+<body>
+
+<div class="grid" id="grid"></div>
+
+<div class="overlay"></div>
+
+<div class="content">
+    <h1>Astrix Studios</h1>
+    <h2>Coming Soon™</h2>
+</div>
+
+<script>
+const images = [
+"sethasaures_0.png","sharcks000_0.png","sleepfx__0.png","soupray5487_0.png","thxaqua_0.png","tpickfx_0.png","tubby_2_0.png","typoplays_0.png","vennixty_0.png","voxtm_0.png","worldofcalico_0.png","zaphz_0.png","zetrokzebro_0.png","zin.i_0.png","__.crimson.___0.png","_durd_0.png","0b5_0.png","0c4rn4g3_0.png","7._t_0.png","aekt.z_0.png","agenth005_business_0.png","alikdebil123_0.png","ashanki_0.png","boredn_0.png","browneii__0.png","cannonman1605_0.png","canuseeme_134_0.png","certifiedlevi_0.png","claucefx_0.png","crypticsfx_0.png","dialjameson_0.png","dragoncraft000_0.png","el_pe._0.png","elongated_orange_0.png","ennzzo._0.png","flooaty_0.png","gufl_0.png","imabanana80_0.png","imrex__0.png","its_brumbrum_0.png","itsdefrealme_0.png","itzjimjam_0.png","josbot_0.png","jotadesign_0.png","lanetheturtle_0.png","lapzfx_0.png","logic_leo_0.png","lolduckyyt_0.png","lumiecent_0.png","m3rtavar_0.png","mariofy_0.png","marksin_0.png","matija019_0.png","michapycha01_0.png","midnight008_0.png","mixubug_0.png","moonrune86_0.png","n0tmadzz_0.png","nangineer_0.png","netzguru0815_0.png","nisuvisuals_0.png","nosidian_0.png","notdaiwikxd_0.png","notninjanmy_0.png","ramezsushi_0.png","remainjk_0.png","rizenyt_0.png","sentai7144_0.png"
+];
+
+for (let i = images.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [images[i], images[j]] = [images[j], images[i]];
+}
+
+const selected = images.slice(0, 65);
+
+const grid = document.getElementById("grid");
+
+selected.forEach(img => {
+    const image = document.createElement("img");
+    image.src = "avatars/" + img;
+    grid.appendChild(image);
+});
+</script>
+
+</body>
+</html>
