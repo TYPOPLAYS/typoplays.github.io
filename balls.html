@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paypal | Send, Spend, and Vibe-Check Payments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pay-blue: #003087;
+            --pay-light-blue: #0070ba;
+            --pay-hover: #001c64;
+            --bg-gray: #f5f7fa;
+            --border-gray: #dbe2eb;
+            --text-dark: #2c2e2f;
+            --text-light: #6c7378;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION: THE DROP-DOWN LIES --- */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-gray);
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 38px;
+            /* Using the requested logo with a slight 'ripoff' hue shift */
+            filter: hue-rotate(10deg);
+        }
+
+        .logo span {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--pay-blue);
+            font-style: italic;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--pay-blue);
+            font-weight: 600;
+            font-size: 15px;
+            padding: 30px 0;
+            display: block;
+            border-bottom: 3px solid transparent;
+        }
+
+        /* The "Dropdowns that are just links" as mentioned in chat */
+        .nav-item-dropdown::after {
+            content: ' ▾';
+            font-size: 10px;
+            vertical-align: middle;
+        }
+
+        nav ul li a:hover {
+            border-bottom: 3px solid var(--pay-blue);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            border: 1px solid var(--pay-blue);
+            color: var(--pay-blue);
+        }
+
+        .btn-login:hover {
+            background: var(--bg-gray);
+        }
+
+        .btn-signup {
+            background: var(--pay-blue);
+            color: #fff;
+            border: 1px solid var(--pay-blue);
+        }
+
+        .btn-signup:hover {
+            background: var(--pay-hover);
+        }
+
+        /* --- HERO: THE CORPORATE DREAM --- */
+        .hero {
+            padding: 180px 10% 100px;
+            background: radial-gradient(circle at 80% 20%, #0070ba 0%, #003087 100%);
+            color: #fff;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 6vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* --- TRUST BAR --- */
+        .trust-bar {
+            padding: 40px 10%;
+            background: var(--bg-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.6;
+            filter: grayscale(1);
+        }
+
+        .trust-bar span { font-weight: 700; color: var(--pay-blue); font-size: 12px; text-transform: uppercase; }
+
+        /* --- THE "VIBE-CODED" FEATURES --- */
+        .section {
+            padding: 120px 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            color: var(--pay-blue);
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border-gray);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: var(--pay-blue);
+        }
+
+        /* --- THE BROKEN DEVELOPER PORTAL (AS SEEN IN DISCORD) --- */
+        .dev-portal {
+            background: #1a1a1a;
+            color: #00ff41;
+            padding: 100px 10%;
+            font-family: 'Courier New', monospace;
+        }
+
+        .dev-container {
+            border: 1px solid #333;
+            background: #000;
+            padding: 40px;
+            position: relative;
+        }
+
+        .dev-container::before {
+            content: "Paypal-api-docs-v2.1-FINAL-DONT-DELETE.md";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #1a1a1a;
+            padding: 0 10px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .broken-code {
+            color: #f8f8f2;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .comment { color: #75715e; }
+        .string { color: #e6db74; }
+
+        /* --- PAY IN 4,000 SECTION --- */
+        .split-pay {
+            background: #fdf5e6;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .split-image {
+            flex: 1;
+            background: #eee;
+            height: 400px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #ccc;
+            border: 4px dashed #ddd;
+        }
+
+        /* --- THE FAQ (COLLAPSED VS UNCOLLAPSED CHAOS) --- */
+        .faq-box {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-gray);
+            padding: 25px 0;
+        }
+
+        .faq-trigger {
+            font-weight: 700;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .faq-content {
+            margin-top: 15px;
+            color: var(--text-light);
+        }
+
+        /* Intentional formatting problem: This one is forced open */
+        .forced-open {
+            display: block !important;
+            color: red;
+            font-weight: 800;
+        }
+
+        /* --- THE "SMALL PRINT" THAT IS ACTUALLY HUGE --- */
+        .legal-bloat {
+            background: #fff;
+            padding: 100px 10%;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+
+        /* --- FOOTER: THE ENDLESS SCROLL --- */
+        footer {
+            padding: 80px 10% 40px;
+            background: #fff;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-grid h4 {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: var(--pay-blue);
+        }
+
+        .footer-grid a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .footer-grid a:hover { color: var(--pay-blue); text-decoration: underline; }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-gray);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* --- MOBILE ASS-NESS --- */
+        @media (max-width: 768px) {
+            header { padding: 0 20px; }
+            nav { display: none; } /* Standard corporate move: just hide the nav on mobile without a burger menu */
+            .hero h1 { font-size: 40px; }
+            .split-pay { flex-direction: column; }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-left">
+        <a href="#" class="logo">
+            <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" alt="Paypal">
+            <span>Paypal</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-item-dropdown">Personal</a></li>
+                <li><a href="#" class="nav-item-dropdown">Business</a></li>
+                <li><a href="#">Developer</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="nav-right">
+        <a href="#" class="btn btn-login">Log In</a>
+        <a href="#" class="btn btn-signup">Sign Up</a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>The safer, easier way to pay.</h1>
+        <p>Whether you're buying a limited edition NFT or sending money to your roommate for that Nando's you forgot to pay for, Paypal has your back. Mostly.</p>
+        <div style="display:flex; gap:20px;">
+            <a href="#" class="btn btn-signup" style="padding: 18px 45px; font-size: 16px;">Get Started Now</a>
+        </div>
+    </div>
+</section>
+
+<div class="trust-bar">
+    <span>Trusted by:</span>
+    <span>VibeCorp</span>
+    <span>TypoStack</span>
+    <span>BananaPay</span>
+    <span>Cryptk-Investments</span>
+    <span>MoonRune Limited</span>
+</div>
+
+<section class="section">
+    <div class="section-header">
+        <h2>Checkout with confidence.</h2>
+        <p>We hide your financial details so you don't have to worry about hackers (except the ones on our team).</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Buyer Protection</h3>
+            <p>If your "unopened" Pokemon box arrives full of rocks, we'll open a dispute that lasts 6 to 8 months.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Pay in 4,000</h3>
+            <p>Why pay today when you can pay $0.01 every week for the next century? Micro-debt is the future.</p>
+        </div>
+        <div class="feature-card">
+            <h3>One-Tap™ Vibe</h3>
+            <p>Skip the login. We recognize your biometric "vibe" and charge your card instantly. No questions asked.</p>
+        </div>
+    </div>
+</section>
+
+<section class="dev-portal">
+    <h3>// DEV_PORTAL_LOG: VIBE_CODED_BETTER</h3>
+    <div class="dev-container">
+        <p class="broken-code">
+            <span class="comment">// This part of the SDK is fully vibe coded</span><br>
+            <span class="comment">// if this breaks, just refresh 5 times</span><br><br>
+            async function initiatePayment(vibeCheck) {<br>
+            &nbsp;&nbsp;const response = await fetch(<span class="string">'https://api.Paypal.vibe/v1/charge'</span>);<br>
+            &nbsp;&nbsp;<span class="comment">// The dropdowns aren't even dropdowns, they're just links to other pages</span><br>
+            &nbsp;&nbsp;if (response.status === <span class="string">'looks_ass'</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return <span class="string">'fahh'</span>;<br>
+            &nbsp;&nbsp;}<br>
+            }
+        </p>
+    </div>
+</section>
+
+<section class="section split-pay">
+    <div class="split-image">
+        [IMAGE_PLACEHOLDER: A BLUE RECTANGLE]
+    </div>
+    <div style="flex:1;">
+        <h2 style="font-size: 38px; color: var(--pay-blue); margin-bottom: 20px;">Manage your money on the move.</h2>
+        <p style="font-size: 18px; margin-bottom: 30px;">Our app is 400MB of pure efficiency. Track your balance, send money, and watch your "Vibe Score" grow in real-time.</p>
+        <a href="#" class="btn btn-login">Download the App</a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-header">
+        <h2>Answers to things you'll ask.</h2>
+    </div>
+    <div class="faq-box">
+        <div class="faq-item">
+            <div class="faq-trigger">How do I get my money back? <span>+</span></div>
+            <div class="faq-content">That's the neat part: you don't. Just kidding. Please wait 180 days for a response.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-trigger" style="color:red;">WARNING: FORMATTING ERROR <span>!</span></div>
+            <div class="faq-content forced-open">
+                THIS SECTION IS PERMANENTLY UNCOLLAPSED BECAUSE THE DEV WAS VIBE CODING AT 3 AM. 
+                SOMETIMES STUFF IS COLLAPSED, SOMETIMES NOT. IT'S THE Paypal WAY.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-trigger">Is Paypal better than Stripe? <span>+</span></div>
+            <div class="faq-content">Stripe is for nerds who like "documentation" and "stable APIs." Paypal is for people who live on the edge.</div>
+        </div>
+    </div>
+</section>
+
+<div class="legal-bloat">
+    <p>
+        *Paypal is a financial technology company, not a bank. We are a collection of CSS files held together by hope. 
+        All transactions are subject to a "Vibe Tax" of 2.9% + $0.30. By clicking anything on this page, you agree to give us 
+        access to your browser history and your first-born's middle name. If the website looks like "ass," it's because it 
+        was "fully vibe coded" by Gemini 3 Flash in the year 2026. We are not responsible for accidental payments to 
+        Nigerian princes or your ex. Buyer protection only applies if you can prove the seller was acting "sus."
+    </p>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>Help & Contact</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Dispute Vibe</a>
+        </div>
+        <div>
+            <h4>Features</h4>
+            <a href="#">Pay in 4,000</a>
+            <a href="#">Crypto Vibe</a>
+            <a href="#">Digital Wallet</a>
+        </div>
+        <div>
+            <h4>Business</h4>
+            <a href="#">Merchant Dashboard</a>
+            <a href="#">Invoicing</a>
+            <a href="#">Vibe Check API</a>
+        </div>
+        <div>
+            <h4>About</h4>
+            <a href="#">Our Story</a>
+            <a href="#">Careers (We're hiring Devs)</a>
+            <a href="#">Investor Relations</a>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">User Agreement</a>
+            <a href="#">Cookies</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 1999 - 2026 Paypal Inc. All rights reserved. Built better than a Stripe clone.</p>
+        <div style="display:flex; gap:20px;">
+            <a href="#" style="color:#6c7378; text-decoration:none;">English</a>
+            <a href="#" style="color:#6c7378; text-decoration:none;">Vibe-Speak</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
