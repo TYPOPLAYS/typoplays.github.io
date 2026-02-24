@@ -134,17 +134,31 @@ h1 {
 }
 
 .socials a {
-  text-decoration: none;
-  font-size: 14px;
-  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border: 1px solid #1f2937;
-  padding: 8px 14px;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: 0.3s ease;
+  background: #111827;
+}
+
+.socials a img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+
+.socials a:hover img {
+  opacity: 1;
 }
 
 .socials a:hover {
   border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.25);
   color: #38bdf8;
 }
 
@@ -249,13 +263,17 @@ h1 {
 </div>
 
 <div class="socials">
-  <a href="https://discord.com/users/717659207851049010" target="_blank">Discord</a>
-  <a href="https://www.youtube.com/@typoplays" target="_blank">YouTube</a>
-  <a href="https://twitch.tv/typoplaysmc" target="_blank">Twitch</a>
-</div>
+  <a href="https://discord.com/users/717659207851049010" target="_blank">
+    <img src="images/discord-outline.png" alt="Discord">
+  </a>
 
-<div class="footer">
-© 2026 Typoplays
+  <a href="https://www.youtube.com/@typoplays" target="_blank">
+    <img src="images/youtube-outline.png" alt="YouTube">
+  </a>
+
+  <a href="https://twitch.tv/typoplaysmc" target="_blank">
+    <img src="images/twitch-outline.png" alt="Twitch">
+  </a>
 </div>
 
 </div>
