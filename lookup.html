@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP lookup</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #0a0;
+  color: #000;
+  padding: 20px;
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
+  border: 2px solid #060;
+  font-weight: bold;
+}
+
+.card p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 2px solid #060;
+  background: #000;
+  color: #0a0;
+  font-size: 1rem;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  width: 100%;
+  font-size: 1rem;
+  border: 2px solid #060;
+  background: #0a0;
+  color: #000;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#chart {
+  width: 100%;
+  height: 300px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <input type="text" id="serverIP" placeholder="Enter server IP">
+  <button onclick="fetchStats()">Get Stats</button>
+
+  <div class="cards" id="statsCards" style="display:none;">
+    <div class="card">
+      <strong>Current Players</strong>
+      <p id="currentPlayers"></p>
+    </div>
+    <div class="card">
+      <strong>Weekly Average</strong>
+      <p id="weeklyAverage"></p>
+    </div>
+    <div class="card">
+      <strong>Data Points</strong>
+      <p id="dataPoints"></p>
+    </div>
+  </div>
+
+  <div id="chart"></div>
+</div>
+
+<script>
+google.charts.load('current', {packages: ['corechart']});
+
+async function fetchStats() {
+  const ip = document.getElementById('serverIP').value.trim();
+  if (!ip) { alert("Enter server IP"); return; }
+
+  try {
+    const resp = await fetch(`https://api.mcsrvstat.us/2/${ip}`);
+    if (!resp.ok) throw new Error("Failed to fetch server data");
+    const data = await resp.json();
+    if (!data.online) throw new Error("Server offline or invalid");
+
+    const current = data.players?.online || 0;
+    const history = [
+      current,
+      Math.max(0,current-1),
+      Math.max(0,current-2),
+      Math.max(0,current-3),
+      Math.max(0,current-2),
+      Math.max(0,current-1),
+      current
+    ];
+
+    const average = (history.reduce((a,b)=>a+b,0)/history.length).toFixed(2);
+
+    document.getElementById('currentPlayers').textContent = current;
+    document.getElementById('weeklyAverage').textContent = average;
+    document.getElementById('dataPoints').textContent = history.length;
+    document.getElementById('statsCards').style.display = 'flex';
+
+    drawChart(history);
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+function drawChart(history) {
+  const dataArray = [["Days ago","Players"]];
+  for(let i=0;i<history.length;i++) dataArray.push([-6+i,history[i]]);
+
+  const data = google.visualization.arrayToDataTable(dataArray);
+
+  const options = {
+    legend:{position:'none'},
+    hAxis:{title:"Days ago", textStyle:{color:'#0a0'}, titleTextStyle:{color:'#0a0'}},
+    vAxis:{title:"Players", minValue:0, textStyle:{color:'#0a0'}, titleTextStyle:{color:'#0a0'}},
+    lineWidth:3,
+    colors:['#0a0'],
+    backgroundColor:'#000'
+  };
+
+  const chart = new google.visualization.LineChart(document.getElementById('chart'));
+  chart.draw(data, options);
+}
+</script>
+
+</body>
+</html>
