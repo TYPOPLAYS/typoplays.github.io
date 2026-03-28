@@ -83,16 +83,39 @@ body {
   color: #22c55e;
 }
 
-/* FEATURES */
-.features {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+/* FEATURES SHOWCASE */
+.features-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
 }
 
-.features img {
-  width: 32px;
-  height: 32px;
+.feature-item {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  background: #0f172a;
+}
+
+.feature-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.features-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.feature-item:first-child {
+  grid-column: span 2;
+}
+
+/* hover effect */
+.feature-item:hover img {
+  transform: scale(1.03);
 }
 
 /* VERSION */
@@ -215,16 +238,19 @@ body {
 <!-- FEATURES -->
 <div class="panel">
   <div class="section-title">Features</div>
-  <div class="features">
-    <img src="logos/sword.png">
-    <img src="logos/axe.png">
-    <img src="logos/crystal.png">
-    <img src="logos/cart.png">
-    <img src="logos/mace.png">
-    <img src="logos/diapot.png">
-    <img src="logos/nethpot.png">
-    <img src="logos/uhc.png">
-    <img src="logos/smp.png">
+
+  <div class="features-showcase">
+    <div class="feature-item">
+      <img src="logos/screenshot1.png">
+    </div>
+
+    <div class="feature-item">
+      <img src="logos/screenshot2.png">
+    </div>
+
+    <div class="feature-item">
+      <img src="logos/screenshot3.png">
+    </div>
   </div>
 </div>
 
