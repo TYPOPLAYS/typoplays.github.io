@@ -1,1 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OceTierTagger</title>
+<link rel="icon" type="image/png" href="profile.png">
 
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  background: #0b0f1a;
+  color: #e5e7eb;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* NAV */
+.nav a {
+  text-decoration: none;
+  color: #22c55e;
+  font-size: 13px;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 25px 0 30px;
+}
+
+.hero img {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-size: 34px;
+}
+
+.hero-text p {
+  margin-top: 6px;
+  opacity: 0.65;
+  font-size: 14px;
+}
+
+/* GRID */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 25px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* PANEL */
+.panel {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+/* TITLE */
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #22c55e;
+}
+
+/* VERSION */
+.version {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.version-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.version-left img {
+  width: 32px;
+  height: 32px;
+}
+
+.version-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.version-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.version-meta {
+  font-size: 12px;
+  opacity: 0.55;
+}
+
+/* TAG */
+.tag {
+  font-size: 10px;
+  background: #22c55e25;
+  color: #22c55e;
+  padding: 3px 7px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+/* BUTTON */
+.button {
+  text-decoration: none;
+  color: #22c55e;
+  border: 1px solid #22c55e;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* SIDEBAR */
+.side-row {
+  margin-bottom: 16px;
+}
+
+.side-label {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.side-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* DEP */
+.dep {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.dep small {
+  opacity: 0.55;
+  font-size: 12px;
+}
+
+/* FEATURE ICONS */
+.features {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.features img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 30px;
+  font-size: 12px;
+  opacity: 0.45;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="nav">
+  <a href="index">← Back</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="icon.png">
+  <div class="hero-text">
+    <h1>OceTierTagger</h1>
+    <p>Client-side OCETiers tag mod for Fabric. Displays player tiers in chat.</p>
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- LEFT -->
+<div>
+
+<!-- FEATURES (icons) -->
+<div class="panel">
+  <div class="section-title">Features</div>
+  <div class="features">
+    <img src="sword.png">
+    <img src="axe.png">
+    <img src="crystal.png">
+    <img src="cart.png">
+    <img src="mace.png">
+    <img src="diapot.png">
+    <img src="nethpot.png">
+    <img src="uhc.png">
+    <img src="smp.png">
+  </div>
+</div>
+
+<!-- FILES -->
+<div class="panel" style="margin-top:20px;">
+  <div class="section-title">Versions</div>
+
+  <div class="version">
+    <div class="version-left">
+      <img src="icon.png">
+      <div class="version-info">
+        <div class="version-name">
+          3.1.0 <span class="tag">Latest</span>
+        </div>
+        <div class="version-meta">Full Chat • 1.21.11 • Fabric</div>
+      </div>
+    </div>
+    <a class="button" href="jars/OceTierTagger-3.1.0%2Bmc1.21.11.jar" download>Download</a>
+  </div>
+
+  <div class="version">
+    <div class="version-left">
+      <img src="icon.png">
+      <div class="version-info">
+        <div class="version-name">3.0.0</div>
+        <div class="version-meta">Half Chat • 1.21.11 • Fabric</div>
+      </div>
+    </div>
+    <a class="button" href="jars/OceTierTagger-3.0.0%2Bmc1.21.11.jar" download>Download</a>
+  </div>
+
+  <div class="version">
+    <div class="version-left">
+      <img src="icon.png">
+      <div class="version-info">
+        <div class="version-name">2.4.0</div>
+        <div class="version-meta">No Chat • 1.21.11 • Fabric</div>
+      </div>
+    </div>
+    <a class="button" href="jars/OceTierTagger-2.4.0%2Bmc1.21.11.jar" download>Download</a>
+  </div>
+
+</div>
+
+<!-- DEP -->
+<div class="panel" style="margin-top:20px;">
+  <div class="section-title">Dependency</div>
+
+  <div class="dep">
+    <div>
+      <strong>ukulib</strong><br>
+      <small>Required library</small>
+    </div>
+
+    <div>
+      <a class="button" href="https://cdn.modrinth.com/data/Y8uFrUil/versions/HDipXwe3/ukulib-neoforge-2.0.0%2B26.1.jar" download>Download</a>
+      <a class="button" href="https://modrinth.com/mod/ukulib/" target="_blank">Page</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Place mods in .minecraft/mods folder.<br>
+  Inspired by YeahJenni's TiersPlus.
+</div>
+
+</div>
+
+<!-- RIGHT SIDEBAR -->
+<div class="panel">
+  <div class="side-row">
+    <div class="side-label">Latest Version</div>
+    <div class="side-value">3.1.0</div>
+  </div>
+
+  <div class="side-row">
+    <div class="side-label">Minecraft</div>
+    <div class="side-value">1.21.11</div>
+  </div>
+
+  <div class="side-row">
+    <div class="side-label">Loader</div>
+    <div class="side-value">Fabric</div>
+  </div>
+
+  <div class="side-row">
+    <div class="side-label">Environment</div>
+    <div class="side-value">Client</div>
+  </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>
