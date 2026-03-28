@@ -16,14 +16,12 @@ body {
   color: #e5e7eb;
 }
 
-/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 30px 20px;
 }
 
-/* NAV */
 .nav a {
   text-decoration: none;
   color: #22c55e;
@@ -85,6 +83,18 @@ body {
   color: #22c55e;
 }
 
+/* FEATURES */
+.features {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.features img {
+  width: 32px;
+  height: 32px;
+}
+
 /* VERSION */
 .version {
   display: flex;
@@ -124,7 +134,6 @@ body {
   opacity: 0.55;
 }
 
-/* TAG */
 .tag {
   font-size: 10px;
   background: #22c55e25;
@@ -173,20 +182,6 @@ body {
   font-size: 12px;
 }
 
-/* FEATURE ICONS */
-.features {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
-
-.features img {
-  width: 32px;
-  height: 32px;
-  opacity: 0.8;
-}
-
 /* FOOTER */
 .footer {
   margin-top: 30px;
@@ -205,7 +200,7 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <img src="icon.png">
+  <img src="logos/icon.png">
   <div class="hero-text">
     <h1>OceTierTagger</h1>
     <p>Client-side OCETiers tag mod for Fabric. Displays player tiers in chat.</p>
@@ -217,29 +212,29 @@ body {
 <!-- LEFT -->
 <div>
 
-<!-- FEATURES (icons) -->
+<!-- FEATURES -->
 <div class="panel">
   <div class="section-title">Features</div>
   <div class="features">
-    <img src="sword.png">
-    <img src="axe.png">
-    <img src="crystal.png">
-    <img src="cart.png">
-    <img src="mace.png">
-    <img src="diapot.png">
-    <img src="nethpot.png">
-    <img src="uhc.png">
-    <img src="smp.png">
+    <img src="logos/sword.png">
+    <img src="logos/axe.png">
+    <img src="logos/crystal.png">
+    <img src="logos/cart.png">
+    <img src="logos/mace.png">
+    <img src="logos/diapot.png">
+    <img src="logos/nethpot.png">
+    <img src="logos/uhc.png">
+    <img src="logos/smp.png">
   </div>
 </div>
 
-<!-- FILES -->
+<!-- VERSIONS -->
 <div class="panel" style="margin-top:20px;">
   <div class="section-title">Versions</div>
 
   <div class="version">
     <div class="version-left">
-      <img src="icon.png">
+      <img src="logos/icon.png">
       <div class="version-info">
         <div class="version-name">
           3.1.0 <span class="tag">Latest</span>
@@ -252,7 +247,7 @@ body {
 
   <div class="version">
     <div class="version-left">
-      <img src="icon.png">
+      <img src="logos/icon.png">
       <div class="version-info">
         <div class="version-name">3.0.0</div>
         <div class="version-meta">Half Chat • 1.21.11 • Fabric</div>
@@ -263,7 +258,7 @@ body {
 
   <div class="version">
     <div class="version-left">
-      <img src="icon.png">
+      <img src="logos/icon.png">
       <div class="version-info">
         <div class="version-name">2.4.0</div>
         <div class="version-meta">No Chat • 1.21.11 • Fabric</div>
@@ -298,7 +293,7 @@ body {
 
 </div>
 
-<!-- RIGHT SIDEBAR -->
+<!-- RIGHT -->
 <div class="panel">
   <div class="side-row">
     <div class="side-label">Latest Version</div>
