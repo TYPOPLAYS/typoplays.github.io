@@ -250,6 +250,60 @@ body {
   font-size: 12px;
   opacity: 0.45;
 }
+
+/* SIDEBAR (MODRINTH STYLE) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #22c55e;
+  margin-bottom: 5px;
+}
+
+.badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 999px;
+
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.badge span {
+  opacity: 0.6;
+}
+
+.badge strong {
+  font-weight: 600;
+}
+
+.badge-download {
+  text-align: center;
+  background: #22c55e;
+  color: black;
+  border-radius: 999px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 6px;
+}
+
+.badge-download:hover {
+  opacity: 0.9;
+}
+
 </style>
 </head>
 
@@ -365,25 +419,28 @@ body {
 
 </div>
 
-<div class="panel">
-  <div class="side-row">
-    <div class="side-label">Latest Version</div>
-    <div class="side-value">3.1.0</div>
+<div class="panel sidebar">
+
+  <div class="sidebar-title">Details</div>
+
+  <div class="badge">
+    <span>Version</span>
+    <strong>3.1.0</strong>
   </div>
 
-  <div class="side-row">
-    <div class="side-label">Minecraft</div>
-    <div class="side-value">1.21.11</div>
+  <div class="badge">
+    <span>Minecraft</span>
+    <strong>1.21.11</strong>
   </div>
 
-  <div class="side-row">
-    <div class="side-label">Loader</div>
-    <div class="side-value">Fabric</div>
+  <div class="badge">
+    <span>Loader</span>
+    <strong>Fabric</strong>
   </div>
 
-  <div class="side-row">
-    <div class="side-label">Environment</div>
-    <div class="side-value">Client</div>
+  <div class="badge">
+    <span>Environment</span>
+    <strong>Client</strong>
   </div>
 </div>
 
