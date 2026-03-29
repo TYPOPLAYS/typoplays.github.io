@@ -106,6 +106,26 @@ h1 {
   gap: 30px;
 }
 
+.view-counter {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(56,189,248,0.15);
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-size: 13px;
+  opacity: 0.9;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .button-card {
   background: #111827;
   padding: 40px 25px;
@@ -219,6 +239,18 @@ h1 {
     </style>
 </head>
 
+<div class="view-counter">
+  &#128065; <span id="views">...</span>
+</div>
+
+<script>
+fetch('https://api.countapi.xyz/hit/typoplays.github.io/visits')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('views').innerText = data.value;
+  });
+</script>
+  
 <body>
 
 <div class="navbar">
@@ -226,7 +258,6 @@ h1 {
   <a href="about">About</a>
   <a href="experience">Experience</a>
   <a href="vouches">Vouches</a>
-  <a href="development">My Development</a>
 </div>
 
 <div class="container">
@@ -257,16 +288,6 @@ h1 {
   <h2>Vouches</h2>
   <p>Vouches from people I’ve worked with.</p>
 </a>
-
-<a href="development" class="button-card">
-  <h2>My Development</h2>
-  <p>Servers and communities I’ve built custom systems and plugins for.</p>
-</a>
-  
-<!-- <a href="skripts" class="button-card">
-  <h2>My Skripts</h2>
-  <p>Download my public Skripts such as manhunt remake and more.</p>
-</a> -->
 </div>
 
 <h2 class="social-title">Contact Me / Socials</h2>
