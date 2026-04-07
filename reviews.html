@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typoplays | Reviews</title>
+    <link rel="icon" type="image/png" href="profile.png">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e2e8f0;
+            animation: fadeIn 1.2s ease;
+        }
+
+        html, body {
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        .nav {
+            margin-bottom: 40px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            opacity: 0.7;
+            margin-bottom: 50px;
+        }
+
+        .review-section {
+            margin-bottom: 60px;
+        }
+
+        .review-label {
+            margin-bottom: 15px;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        .review-card {
+            background: #111827;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #1f2937;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: #38bdf8;
+        }
+
+        .review-card img {
+            max-width: 100%;
+            border-radius: 12px;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="https://typoplays.github.io/">← Back to Home</a>
+        </div>
+
+        <h1>Client Reviews</h1>
+        <p class="subtitle">
+            Reviews and feedback from clients I’ve worked with.
+        </p>
+
+        <div class="review-section">
+            <p class="review-label">
+                Redblack (972778892467265626) | Resource Pack Conversion
+            </p>
+            <div class="review-card">
+                <img src="vouches/redblack.webp" alt="Redblack Review">
+            </div>
+        </div>
+
+        <p class="subtitle" style="margin-top: 40px;">
+            End of reviews.
+        </p>
+
+        <p class="subtitle" style="margin-top: 40px;">
+            If you would like to leave a review, please contact me on 
+            <a href="https://discord.com/users/717659207851049010" 
+               style="color: #38bdf8; text-decoration: none;" 
+               target="_blank">
+               Discord
+            </a>.
+        </p>
+    </div>
+</body>
+</html>
