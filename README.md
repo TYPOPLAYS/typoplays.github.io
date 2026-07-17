@@ -1,10 +1,11 @@
-# Typoplays's Portfolio Github
+# Typoplays's Portfolio
 
-Personal portfolio site for Typoplays (me).  
+
+This repository contains the source code for Typoplays' (me) portfolio.  
 
 ## Image Credits
 
-All logos and graphical assets used on this website belong to their respective rightful owners.
+Logos and other branding belong to their respective owners.
 
 This includes, but is not limited to:
 
@@ -14,4 +15,4 @@ This includes, but is not limited to:
 
 These assets are used for identification and informational purposes only. No ownership is claimed over any third-party images, branding, or logos displayed on this site.
 
-If you are a rights holder and would like an asset removed or credited differently, please contact me via Discord: @typoplays.
+If you're the owner of an asset and would like it removed or credited differently, contact me on Discord: @typoplays
