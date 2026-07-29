@@ -139,7 +139,7 @@ h1::after {
 <div class="card">
 <img src="logos/smpfinder.webp" alt="SMP Finder">
 <div class="card-content">
-<h2>SMP Finder - Senior Admin (51.1k members)</h2>
+<h2>SMP Finder - Senior Admin (<span id="members-smpfinder">Loading...</span>)</h2>
 <p>Mar 2026 – Present</p>
 <p>Management, moderation and tickets, helping organise and run staff interviews.</p>
 <p>Hired: 29/03/26</p>
@@ -151,7 +151,7 @@ h1::after {
 <div class="card">
 <img src="logos/isapalace.webp" alt="Isa's Palace">
 <div class="card-content">
-<h2>Isa's Palace - Chat Mod (533 members)</h2>
+<h2>Isa's Palace - Chat Mod (<span id="members-isabxdlol">Loading...</span>)</h2>
 <p>Jul 2026 – Present</p>
 <p>General Moderation.</p>
 <p>Hired: 05/07/26</p>
@@ -163,7 +163,7 @@ h1::after {
 <div class="card">
 <img src="logos/smpsalesnew.webp" alt="SMP Sales">
 <div class="card-content">
-<h2>SMP Sales - Freelance Manager (392 members)</h2>
+<h2>SMP Sales - Freelance Manager (<span id="members-smpsales">Loading...</span>)</h2>
 <p>Jun 2026 – Present</p>
 <p>Managing freelancers and other general management duties.</p>
 <p>Hired: 09/06/26</p>
@@ -270,5 +270,29 @@ h1::after {
 </div>
 
 </div>
+
+<script>
+async function updateDiscordMembers(elementId, invite) {
+    try {
+        const response = await fetch(
+            `https://discord.com/api/v9/invites/${invite}?with_counts=true`
+        );
+
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+
+        document.getElementById(elementId).textContent =
+            `${(data.approximate_member_count / 1000).toFixed(1)}k members`;
+    } catch {
+        document.getElementById(elementId).textContent = "Unknown";
+    }
+}
+
+updateDiscordMembers("members-smpfinder", "8NG4V34tC");
+updateDiscordMembers("members-smpsales", "MPpfBDVVB6");
+updateDiscordMembers("members-isabxdlol", "DtznmdPmRT");
+</script>
+
 </body>
 </html>
