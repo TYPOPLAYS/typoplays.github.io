@@ -281,13 +281,17 @@ async function updateDiscordMembers(elementId, invite) {
         if (!response.ok) throw new Error();
 
         const data = await response.json();
+        const members = data.approximate_member_count;
 
         document.getElementById(elementId).textContent =
-            `${(data.approximate_member_count / 1000).toFixed(1)}k members`;
+            members < 1000
+                ? `${members} members`
+                : `${(members / 1000).toFixed(1)}k members`;
     } catch {
         document.getElementById(elementId).textContent = "Unknown";
     }
 }
+</script>
 
 updateDiscordMembers("members-smpfinder", "8NG4V34tC");
 updateDiscordMembers("members-smpsales", "MPpfBDVVB6");
