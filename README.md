@@ -1,18 +1,22 @@
 # Typoplays's Portfolio
 
+This repository contains the source code for Typoplays's personal portfolio.
 
-This repository contains the source code for Typoplays' (me) portfolio.  
+The portfolio showcases my previous experience, projects, roles, and work across different communities and organisations.
 
 ## Image Credits
 
-Logos and other branding belong to their respective owners.
+Logos, branding, screenshots, and other assets displayed on the portfolio may belong to their respective owners.
 
 This includes, but is not limited to:
+- Rizenyt and the SMP Finder Team
+- kayddd_ and the OceHub Team
+- vrodo and the Owners United Team
 
-- Rizenyt and the SMP Finder Production and Management Team
-- kayddd_ and the OCEHUB Team
-- vrodo and the OwnersUnited Team
+These assets are used for identification and informational purposes only. No ownership or rights over third-party assets, logos, or branding are claimed.
 
-These assets are used for identification and informational purposes only. No ownership is claimed over any third-party images, branding, or logos displayed on this site.
+All third-party assets remain the property of their respective owners.
 
-If you're the owner of an asset and would like it removed or credited differently, contact me on Discord: @typoplays
+## Contact
+
+If you are the owner of an asset displayed on the portfolio and would like it removed or credited differently, contact me on Discord: @typoplays.
